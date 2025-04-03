@@ -1,3 +1,25 @@
+## 1.1.0
+
+### Major Updates
+* Complete documentation overhaul with detailed guides
+* Enhanced error handling system with better user feedback
+* Improved cross-platform compatibility
+* Performance optimizations for message handling
+
+### New Features
+* Added comprehensive implementation examples
+* Enhanced UI components with modern design patterns
+* Improved state management and resource usage
+* Added detailed API documentation
+* Enhanced type safety across the package
+
+### Improvements
+* Better error recovery mechanisms
+* Optimized message processing
+* Updated widget documentation
+* Enhanced code examples
+* Improved testing coverage
+
 ## 1.0.9
 
 * Fixed deprecated color opacity usage in chat UI
