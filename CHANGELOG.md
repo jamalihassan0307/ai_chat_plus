@@ -1,3 +1,11 @@
+## 1.0.3
+
+* Updated documentation with improved usage examples
+* Enhanced error handling documentation
+* Added key features section in documentation
+* Improved code examples and implementation details
+* Updated API key management instructions
+
 ## 1.0.2
 
 * Fixed Gemini service implementation and initialization
