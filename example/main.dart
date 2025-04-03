@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildAIButton(BuildContext context, String title, IconData icon, 
+  Widget _buildAIButton(BuildContext context, String title, IconData icon,
       Color color, Widget page) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),

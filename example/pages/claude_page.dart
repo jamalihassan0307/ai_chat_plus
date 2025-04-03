@@ -106,7 +106,8 @@ class _ClaudeChatPageState extends State<ClaudeChatPage> {
                   final isUser = message.startsWith('You: ');
 
                   return Align(
-                    alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
+                    alignment:
+                        isUser ? Alignment.centerRight : Alignment.centerLeft,
                     child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 4),
                       padding: const EdgeInsets.all(12),
@@ -176,4 +177,4 @@ class _ClaudeChatPageState extends State<ClaudeChatPage> {
       ),
     );
   }
-} 
+}
