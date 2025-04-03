@@ -3,6 +3,7 @@ library ai_chat_plus;
 export 'src/models/ai_model.dart';
 export 'src/services/ai_service.dart';
 export 'src/services/openai_service.dart';
+export 'src/services/gemini_service.dart';
 
 /// Main widget for AI Chat Plus
 class AIChat {
