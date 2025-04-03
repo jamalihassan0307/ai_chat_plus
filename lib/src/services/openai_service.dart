@@ -14,6 +14,14 @@ class OpenAIService implements AIService {
   }
 
   @override
+  Future<void> initialize(AIModelConfig config) async {
+    if (config.provider != AIProvider.openAI) {
+      throw ArgumentError('Invalid provider type for OpenAIService');
+    }
+    // OpenAI is already initialized in constructor
+  }
+
+  @override
   Future<String> generateResponse(String prompt) async {
     try {
       final response = await _openAI.chat.create(
