@@ -5,67 +5,58 @@ import 'ai_service.dart';
 
 /// Implementation of [AIService] for OpenAI
 class OpenAIService implements AIService {
-  OpenAI? _openAI;
-  String? _modelId;
+  final String apiKey;
+  late final OpenAI _openAI;
 
-  @override
-  Future<void> initialize(AIModelConfig config) async {
-    if (config.provider != AIProvider.openAI) {
-      throw ArgumentError('Invalid provider type for OpenAIService');
-    }
-
-    OpenAI.apiKey = config.apiKey;
-    _modelId = config.modelId ?? OpenAIModel.gpt35Turbo.modelId;
+  OpenAIService({required this.apiKey}) {
+    OpenAI.apiKey = apiKey;
     _openAI = OpenAI.instance;
   }
 
   @override
   Future<String> generateResponse(String prompt) async {
-    if (_openAI == null) throw StateError('OpenAI service not initialized');
+    try {
+      final response = await _openAI.chat.create(
+        model: 'gpt-3.5-turbo',
+        messages: [
+          OpenAIChatCompletionChoiceMessageModel(
+            content: prompt,
+            role: OpenAIChatMessageRole.user,
+          ),
+        ],
+      );
 
-    final completion = await _openAI!.chat.create(
-      model: _modelId!,
-      messages: [
-        OpenAIChatCompletionChoiceMessageModel(
-          content: [
-            OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)
-          ],
-          role: OpenAIChatMessageRole.user,
-        ),
-      ],
-    );
-
-    final content = completion.choices.first.message.content;
-    if (content == null || content.isEmpty) return '';
-    return content.first.text ?? '';
+      return response.choices.first.message.content;
+    } catch (e) {
+      throw Exception('OpenAI Error: $e');
+    }
   }
 
   @override
   Stream<String> streamResponse(String prompt) async* {
-    if (_openAI == null) throw StateError('OpenAI service not initialized');
+    try {
+      final stream = await _openAI.chat.createStream(
+        model: 'gpt-3.5-turbo',
+        messages: [
+          OpenAIChatCompletionChoiceMessageModel(
+            content: prompt,
+            role: OpenAIChatMessageRole.user,
+          ),
+        ],
+      );
 
-    final stream = _openAI!.chat.createStream(
-      model: _modelId!,
-      messages: [
-        OpenAIChatCompletionChoiceMessageModel(
-          content: [
-            OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)
-          ],
-          role: OpenAIChatMessageRole.user,
-        ),
-      ],
-    );
-
-    await for (final chunk in stream) {
-      final content = chunk.choices.first.delta.content;
-      if (content != null && content.isNotEmpty && content.first != null) {
-        yield content.first?.text ?? '';
+      await for (final res in stream) {
+        if (res.choices.first.delta.content != null) {
+          yield res.choices.first.delta.content!;
+        }
       }
+    } catch (e) {
+      throw Exception('OpenAI Stream Error: $e');
     }
   }
 
   @override
   Future<void> dispose() async {
-    // No specific cleanup needed for OpenAI
+    // No cleanup needed for OpenAI
   }
 }
