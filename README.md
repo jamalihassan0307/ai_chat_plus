@@ -75,24 +75,49 @@ aiService.streamResponse("Tell me a story").listen(
 );
 ```
 
-### Using with Google Gemini
+### Using with Google Gemini 1.5 Flash
 
 ```dart
-import 'package:ai_chat_plus/ai_chat_plus.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-// Initialize with Gemini
-final config = AIModelConfig(
-  provider: AIProvider.googleGemini,
-  apiKey: "YOUR_GEMINI_API_KEY",
-  modelId: GeminiModel.geminiPro.modelId,
-);
+Future<String> generateGeminiResponse(String prompt) async {
+  final apiKey = 'YOUR_GEMINI_API_KEY';
+  final url = Uri.parse(
+    'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey'
+  );
 
-final aiService = AIServiceFactory.createService(AIProvider.googleGemini);
-await aiService.initialize(config);
+  try {
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        "contents": [{
+          "parts": [{"text": prompt}]
+        }]
+      }),
+    );
 
-// Generate a response
-final response = await aiService.generateResponse("What is quantum computing?");
-print(response);
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data['candidates'][0]['content']['parts'][0]['text'];
+    } else {
+      throw Exception('Failed to generate response: ${response.statusCode}');
+    }
+  } catch (e) {
+    throw Exception('Error generating response: $e');
+  }
+}
+
+// Usage example
+void main() async {
+  try {
+    final response = await generateGeminiResponse("What is quantum computing?");
+    print(response);
+  } catch (e) {
+    print('Error: $e');
+  }
+}
 ```
 
 ### Flutter UI Integration Example
