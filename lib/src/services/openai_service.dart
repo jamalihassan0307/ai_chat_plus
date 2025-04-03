@@ -28,13 +28,13 @@ class OpenAIService implements AIService {
         model: 'gpt-3.5-turbo',
         messages: [
           OpenAIChatCompletionChoiceMessageModel(
-            content: prompt,
+            content: [OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)],
             role: OpenAIChatMessageRole.user,
           ),
         ],
       );
 
-      return response.choices.first.message.content;
+      return response.choices.first.message.content?.first?.text ?? '';
     } catch (e) {
       throw Exception('OpenAI Error: $e');
     }
@@ -47,15 +47,15 @@ class OpenAIService implements AIService {
         model: 'gpt-3.5-turbo',
         messages: [
           OpenAIChatCompletionChoiceMessageModel(
-            content: prompt,
+            content: [OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)],
             role: OpenAIChatMessageRole.user,
           ),
         ],
       );
 
       await for (final res in stream) {
-        if (res.choices.first.delta.content != null) {
-          yield res.choices.first.delta.content!;
+        if (res.choices.first.delta.content?.isNotEmpty ?? false) {
+          yield res.choices.first.delta.content?.first?.text ?? '';
         }
       }
     } catch (e) {
