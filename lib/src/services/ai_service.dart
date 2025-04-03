@@ -23,9 +23,9 @@ class AIServiceFactory {
   static AIService createService(AIProvider provider) {
     switch (provider) {
       case AIProvider.openAI:
-        throw UnimplementedError('OpenAI service not yet implemented');
+        return OpenAIService(apiKey: '');  // apiKey will be set during initialize
       case AIProvider.gemini:
-        throw UnimplementedError('Gemini service not yet implemented');
+        return GeminiService(apiKey: '');  // apiKey will be set during initialize
     }
   }
 }
