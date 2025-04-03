@@ -19,13 +19,13 @@ dependencies:
   http: ^1.3.0
   json_annotation: ^4.9.0
   universal_io: ^2.2.2  # Platform-agnostic IO operations
-  web_socket_channel: ^2.4.0  # For web socket support
+  web_socket_channel: ^2.4.0  # Keeping at 2.4.0 for compatibility
 
   # State Management
   provider: ^6.1.4
 
   # Data Models & Serialization
-  freezed_annotation: ^2.4.1
+  freezed_annotation: ^2.4.1  # Keeping at 2.4.1 for SDK compatibility
   equatable: ^2.0.7
 
 dev_dependencies:
@@ -34,7 +34,7 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   build_runner: ^2.4.8
   json_serializable: ^6.7.1
-  freezed: ^2.4.7
+  freezed: ^2.4.7  # Keeping at 2.4.7 for SDK compatibility
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -51,12 +51,7 @@ flutter:
       web:
         pluginClass: AIChatPlusWeb
         fileName: ai_chat_plus_web.dart
-      windows:
-        pluginClass: AIChatPlusPlugin
-      macos:
-        pluginClass: AIChatPlusPlugin
-      linux:
-        pluginClass: AIChatPlusPlugin
+     
 
   # To add assets to your package, add an assets section, like this:
   # assets:
