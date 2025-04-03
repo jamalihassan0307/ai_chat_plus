@@ -5,28 +5,31 @@ import 'ai_service.dart';
 import '../models/ai_model.dart';
 
 class GeminiService implements AIService {
-  final String apiKey;
+  String? _apiKey;
   late final String _baseUrl;
   late final String _model;
 
-  GeminiService({required this.apiKey});
+  GeminiService({required String apiKey}) {
+    _apiKey = apiKey;
+  }
 
   @override
   Future<void> initialize(AIModelConfig config) async {
     if (config.provider != AIProvider.gemini) {
       throw ArgumentError('Invalid provider type for GeminiService');
     }
+    _apiKey = config.apiKey;
     _model = config.modelId ?? GeminiModel.geminiFlash.modelId;
     _baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models/$_model:generateContent';
   }
 
   @override
   Future<String> generateResponse(String prompt) async {
-    if (_baseUrl == null) {
+    if (_apiKey == null) {
       throw StateError('GeminiService not initialized. Call initialize() first.');
     }
 
-    final url = Uri.parse('$_baseUrl?key=$apiKey');
+    final url = Uri.parse('$_baseUrl?key=$_apiKey');
 
     try {
       final response = await http.post(
