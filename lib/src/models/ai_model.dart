@@ -7,6 +7,7 @@ part 'ai_model.g.dart';
 enum AIProvider {
   openAI,
   gemini,
+  claude,
 }
 
 /// Enum representing different OpenAI models
@@ -27,6 +28,16 @@ enum GeminiModel {
 
   final String modelId;
   const GeminiModel(this.modelId);
+}
+
+/// Enum representing different Claude models
+enum ClaudeModel {
+  claude3Sonnet('claude-3-sonnet-20240229'),
+  claude3Opus('claude-3-opus-20240229'),
+  claude3Haiku('claude-3-haiku-20240307');
+
+  final String modelId;
+  const ClaudeModel(this.modelId);
 }
 
 /// Configuration for AI model settings
