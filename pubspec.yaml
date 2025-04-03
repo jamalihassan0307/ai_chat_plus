@@ -1,6 +1,6 @@
 name: ai_chat_plus
 description: "A Flutter package that provides AI chat functionality with enhanced features including OpenAI, Google Gemini, and Claude AI integrations, voice recognition, and multimodal support."
-version: 1.0.7
+version: 1.0.8
 homepage: https://github.com/jamalihassan0307/ai_chat_plus
 repository: https://github.com/jamalihassan0307/ai_chat_plus
 
