@@ -1,5 +1,3 @@
-
-
 <!--
 This README describes the package. If you publish this package to pub.dev,
 this README's contents appear on the landing page for your package.
@@ -94,13 +92,49 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  ai_chat_plus: ^1.0.9
+  ai_chat_plus: ^1.1.0
 ```
 
 Then run:
 ```bash
 flutter pub get
 ```
+
+### What's New in 1.1.0 🚀
+
+- **Enhanced Documentation**: Comprehensive guides and examples
+- **Improved Error Handling**: Better error messages and recovery
+- **Modern UI Components**: Updated design patterns and widgets
+- **Performance Optimizations**: Faster message processing
+- **Cross-Platform Support**: Better web and mobile support
+
+### Key Features
+
+1. **Multi-Provider Support**
+   - OpenAI GPT (3.5/4/4-turbo)
+   - Google Gemini
+   - Claude AI
+   - Easy provider switching
+
+2. **Advanced UI Components**
+   - Customizable chat bubbles
+   - Typing indicators
+   - Message timestamps
+   - Avatar support
+   - Theme customization
+
+3. **Developer Experience**
+   - Type-safe API
+   - Comprehensive error handling
+   - Detailed documentation
+   - Example implementations
+   - Easy integration
+
+4. **Performance**
+   - Efficient message handling
+   - Optimized state management
+   - Minimal resource usage
+   - Fast response times
 
 ### Using OpenAI Service
 
