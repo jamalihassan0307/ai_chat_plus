@@ -344,3 +344,10 @@ For complete implementation examples, check the example folder in the package re
 ## Support
 
 If you find this package helpful, please give it a star on [GitHub](https://github.com/jamalihassan0307/ai_chat_plus)!
+
+## Contact
+
+- 👨‍💻 Developed by [Jam Ali Hassan](https://github.com/jamalihassan0307)
+- 🌐 [Portfolio](https://jamalihassan0307.github.io/portfolio.github.io)
+- 📧 Email: jamalihassan0307@gmail.com
+- 🔗 [LinkedIn](https://www.linkedin.com/in/jamalihassan0307)
