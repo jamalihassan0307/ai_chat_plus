@@ -1,3 +1,12 @@
+## 1.0.9
+
+* Fixed deprecated color opacity usage in chat UI
+* Improved code formatting and structure
+* Enhanced widget performance and stability
+* Updated to use modern color manipulation methods
+* Improved static analysis compliance
+* Enhanced code documentation and examples
+
 ## 1.0.8
 
 * Added Prebuilt Chat UI with customizable components
