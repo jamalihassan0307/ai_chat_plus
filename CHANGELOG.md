@@ -1,3 +1,11 @@
+## 1.0.6
+
+* Added web platform support with platform-agnostic HTTP client
+* Implemented cross-platform compatibility using universal_io
+* Added web socket support for streaming capabilities
+* Enhanced plugin configuration for all supported platforms
+* Improved web-specific implementations and error handling
+
 ## 1.0.5
 
 * Updated dependencies to latest compatible versions
