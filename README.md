@@ -1,3 +1,5 @@
+
+
 <!--
 This README describes the package. If you publish this package to pub.dev,
 this README's contents appear on the landing page for your package.
@@ -10,6 +12,58 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
+<div align="center">
+  <kbd>
+    <img src="https://github.com/jamalihassan0307/ai_chat_plus/blob/main/image/image.jpg?raw=true" width="250" alt="Jam Ali Hassan"/>
+  </kbd>
+  
+  <h1>🌟 AI Chat Plus 🌟</h1>
+  <p><i>A powerful Flutter package for AI chat integration with OpenAI, Google Gemini, and Claude AI</i></p>
+  
+  <p align="center">
+    <a href="https://github.com/jamalihassan0307">
+      <img src="https://img.shields.io/badge/Created_by-Jam_Ali_Hassan-blue?style=for-the-badge&logo=github&logoColor=white" alt="Created by"/>
+    </a>
+  </p>
+
+  <p align="center">
+    <a href="https://github.com/jamalihassan0307">
+      <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+    </a>
+    <a href="https://www.linkedin.com/in/jamalihassan0307">
+      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+    </a>
+    <a href="https://jamalihassan0307.github.io/portfolio.github.io">
+      <img src="https://img.shields.io/badge/Portfolio-255E63?style=for-the-badge&logo=About.me&logoColor=white" alt="Portfolio"/>
+    </a>
+  </p>
+
+  <p align="center">
+    <a href="https://pub.dev/packages/ai_chat_plus">
+      <img src="https://img.shields.io/pub/v/ai_chat_plus?style=for-the-badge&logo=dart&logoColor=white" alt="Pub Version"/>
+    </a>
+    <a href="https://flutter.dev">
+      <img src="https://img.shields.io/badge/Platform-Flutter-02569B?style=for-the-badge&logo=flutter" alt="Platform"/>
+    </a>
+    <a href="https://opensource.org/licenses/MIT">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT"/>
+    </a>
+  </p>
+
+  <p align="center">
+    <a href="https://pub.dev/packages/ai_chat_plus">
+      <img src="https://img.shields.io/pub/likes/ai_chat_plus?style=for-the-badge&logo=flutter&logoColor=white&label=Pub%20Likes" alt="Pub Likes"/>
+    </a>
+    <a href="https://pub.dev/packages/ai_chat_plus">
+      <img src="https://img.shields.io/pub/points/ai_chat_plus?style=for-the-badge&logo=flutter&logoColor=white&label=Pub%20Points" alt="Pub Points"/>
+    </a>
+    <a href="https://pub.dev/packages/ai_chat_plus">
+      <img src="https://img.shields.io/pub/popularity/ai_chat_plus?style=for-the-badge&logo=flutter&logoColor=white&label=Popularity" alt="Popularity"/>
+    </a>
+  </p>
+</div>
+
+---
 
 # AI Chat Plus
 
