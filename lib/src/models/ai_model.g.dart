@@ -24,7 +24,5 @@ Map<String, dynamic> _$$AIModelConfigImplToJson(_$AIModelConfigImpl instance) =>
 
 const _$AIProviderEnumMap = {
   AIProvider.openAI: 'openAI',
-  AIProvider.googleGemini: 'googleGemini',
-  AIProvider.claude: 'claude',
-  AIProvider.custom: 'custom',
+  AIProvider.gemini: 'gemini',
 };
