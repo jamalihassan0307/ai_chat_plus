@@ -34,7 +34,7 @@ class OpenAIService implements AIService {
         ],
       );
 
-      return response.choices.first.message.content?.first?.text ?? '';
+      return response.choices.first.message.content?.first.text ?? '';
     } catch (e) {
       throw Exception('OpenAI Error: $e');
     }
@@ -43,7 +43,7 @@ class OpenAIService implements AIService {
   @override
   Stream<String> streamResponse(String prompt) async* {
     try {
-      final stream = await _openAI.chat.createStream(
+      final stream = _openAI.chat.createStream(
         model: 'gpt-3.5-turbo',
         messages: [
           OpenAIChatCompletionChoiceMessageModel(
