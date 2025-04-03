@@ -22,7 +22,8 @@ enum OpenAIModel {
 /// Enum representing different Gemini models
 enum GeminiModel {
   geminiPro('gemini-pro'),
-  geminiPro15('gemini-pro-1.5');
+  geminiPro15('gemini-pro-1.5'),
+  geminiFlash('gemini-1.5-flash');
 
   final String modelId;
   const GeminiModel(this.modelId);
