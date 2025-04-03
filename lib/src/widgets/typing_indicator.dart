@@ -6,11 +6,11 @@ class TypingIndicator extends StatefulWidget {
   final Duration animationDuration;
 
   const TypingIndicator({
-    Key? key,
+    super.key,
     this.dotColor = Colors.grey,
     this.dotSize = 8.0,
     this.animationDuration = const Duration(milliseconds: 1500),
-  }) : super(key: key);
+  });
 
   @override
   State<TypingIndicator> createState() => _TypingIndicatorState();
