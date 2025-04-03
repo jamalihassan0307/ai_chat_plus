@@ -35,7 +35,9 @@ class OpenAIService implements AIService {
       ],
     );
 
-    return completion.choices.first.message.content ?? '';
+    final content = completion.choices.first.message.content;
+    if (content == null || content.isEmpty) return '';
+    return content.first.text ?? '';
   }
 
   @override
@@ -55,8 +57,9 @@ class OpenAIService implements AIService {
     );
 
     await for (final chunk in stream) {
-      if (chunk.choices.first.delta.content != null) {
-        yield chunk.choices.first.delta.content!;
+      final content = chunk.choices.first.delta.content;
+      if (content != null && content.isNotEmpty && content.first != null) {
+        yield content.first.text ?? '';
       }
     }
   }
