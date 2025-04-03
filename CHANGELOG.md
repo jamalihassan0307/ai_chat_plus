@@ -1,3 +1,11 @@
+## 1.0.2
+
+* Fixed Gemini service implementation and initialization
+* Improved error handling in AIServiceFactory
+* Fixed OpenAI service streaming implementation
+* Updated documentation with correct version numbers
+* Fixed null safety issues in service implementations
+
 ## 1.0.1
 
 * Added Google Gemini integration with full support for text generation
