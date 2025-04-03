@@ -1,3 +1,11 @@
+## 1.0.7
+
+* Added platform-specific implementations for iOS
+* Created basic plugin structure for all supported platforms
+* Updated Flutter SDK constraints for better compatibility
+* Improved plugin registration mechanism
+* Enhanced cross-platform support
+
 ## 1.0.6
 
 * Added web platform support with platform-agnostic HTTP client
