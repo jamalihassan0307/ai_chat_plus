@@ -17,4 +17,3 @@ class AIChat {
 
   // Implementation will be added in future updates
 }
-

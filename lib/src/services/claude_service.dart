@@ -26,7 +26,8 @@ class ClaudeService implements AIService {
   @override
   Future<String> generateResponse(String prompt) async {
     if (_apiKey == null) {
-      throw StateError('ClaudeService not initialized. Call initialize() first.');
+      throw StateError(
+          'ClaudeService not initialized. Call initialize() first.');
     }
 
     try {
@@ -50,7 +51,8 @@ class ClaudeService implements AIService {
         final data = jsonDecode(response.body);
         return data['content'][0]['text'] ?? 'No response generated';
       } else {
-        throw Exception('Failed to generate response: ${response.statusCode}\n${response.body}');
+        throw Exception(
+            'Failed to generate response: ${response.statusCode}\n${response.body}');
       }
     } catch (e) {
       throw Exception('Claude Error: $e');
@@ -69,4 +71,4 @@ class ClaudeService implements AIService {
   Future<void> dispose() async {
     // No cleanup needed for Claude
   }
-} 
+}
