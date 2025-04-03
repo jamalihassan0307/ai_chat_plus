@@ -42,13 +42,23 @@ class AIModelConfig with _$AIModelConfig {
       _$AIModelConfigFromJson(json);
 }
 
-@freezed
-class AIResponse with _$AIResponse {
-  const factory AIResponse({
-    required String text,
-    required AIProvider provider,
-  }) = _AIResponse;
+/// Response from AI models
+class AIResponse {
+  final String text;
+  final AIProvider provider;
 
-  factory AIResponse.fromJson(Map<String, dynamic> json) =>
-      _$AIResponseFromJson(json);
+  const AIResponse({
+    required this.text,
+    required this.provider,
+  });
+
+  factory AIResponse.fromJson(Map<String, dynamic> json) => AIResponse(
+    text: json['text'] as String,
+    provider: json['provider'] as AIProvider,
+  );
+
+  Map<String, dynamic> toJson() => {
+    'text': text,
+    'provider': provider,
+  };
 }
