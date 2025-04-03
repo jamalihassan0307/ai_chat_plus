@@ -63,9 +63,11 @@ void main() {
     });
 
     test('Claude model IDs are correct', () {
-      expect(ClaudeModel.claude3Sonnet.modelId, equals('claude-3-sonnet-20240229'));
+      expect(ClaudeModel.claude3Sonnet.modelId,
+          equals('claude-3-sonnet-20240229'));
       expect(ClaudeModel.claude3Opus.modelId, equals('claude-3-opus-20240229'));
-      expect(ClaudeModel.claude3Haiku.modelId, equals('claude-3-haiku-20240307'));
+      expect(
+          ClaudeModel.claude3Haiku.modelId, equals('claude-3-haiku-20240307'));
     });
   });
 
