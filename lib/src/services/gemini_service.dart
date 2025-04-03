@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'ai_service.dart';
+import '../models/ai_model.dart';
 
 class GeminiService implements AIService {
   final String apiKey;
@@ -10,8 +11,11 @@ class GeminiService implements AIService {
   GeminiService({required this.apiKey});
 
   @override
-  Future<void> initialize() async {
-    // No initialization needed for Gemini
+  Future<void> initialize(AIModelConfig config) async {
+    if (config.provider != AIProvider.gemini) {
+      throw ArgumentError('Invalid provider type for GeminiService');
+    }
+    // No additional initialization needed for Gemini
   }
 
   @override
