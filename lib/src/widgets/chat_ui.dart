@@ -91,7 +91,8 @@ class _ChatUIState extends State<ChatUI> {
                   return Align(
                     alignment: Alignment.centerLeft,
                     child: TypingIndicator(
-                      dotColor: widget.primaryColor ?? Theme.of(context).primaryColor,
+                      dotColor:
+                          widget.primaryColor ?? Theme.of(context).primaryColor,
                     ),
                   );
                 }
@@ -100,7 +101,9 @@ class _ChatUIState extends State<ChatUI> {
                 return ChatBubble(
                   message: message.message,
                   isUser: message.isUser,
-                  avatarUrl: message.isUser ? widget.userAvatarUrl : widget.aiAvatarUrl,
+                  avatarUrl: message.isUser
+                      ? widget.userAvatarUrl
+                      : widget.aiAvatarUrl,
                   timestamp: message.timestamp,
                 );
               },
@@ -144,7 +147,8 @@ class _ChatUIState extends State<ChatUI> {
                   const SizedBox(width: 8),
                   IconButton(
                     icon: const Icon(Icons.send),
-                    color: widget.primaryColor ?? Theme.of(context).primaryColor,
+                    color:
+                        widget.primaryColor ?? Theme.of(context).primaryColor,
                     onPressed: () => _handleSubmitted(_textController.text),
                   ),
                 ],
@@ -161,4 +165,4 @@ class _ChatUIState extends State<ChatUI> {
     widget.onSendMessage(text);
     _textController.clear();
   }
-} 
+}
