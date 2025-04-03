@@ -4,12 +4,7 @@ part 'ai_model.freezed.dart';
 part 'ai_model.g.dart';
 
 /// Enum representing different AI providers
-enum AIProvider {
-  openAI,
-  googleGemini,
-  claude,
-  custom
-}
+enum AIProvider { openAI, googleGemini, claude, custom }
 
 /// Enum representing different OpenAI models
 enum OpenAIModel {
@@ -40,6 +35,6 @@ class AIModelConfig with _$AIModelConfig {
     Map<String, dynamic>? additionalConfig,
   }) = _AIModelConfig;
 
-  factory AIModelConfig.fromJson(Map<String, dynamic> json) => 
+  factory AIModelConfig.fromJson(Map<String, dynamic> json) =>
       _$AIModelConfigFromJson(json);
-} 
+}
