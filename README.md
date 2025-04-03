@@ -19,16 +19,16 @@ A Flutter package that provides AI chat functionality with enhanced features inc
 
 Currently Implemented:
 - 🤖 OpenAI GPT Integration (3.5/4/4-turbo)
+- 🧠 Google Gemini Integration
 - 🔄 Streaming responses support
 - 🎯 Type-safe API
-- 📱 Easy integration
+- 📱 Easy integration with beautiful UI components
+- ⚡ Fast and efficient message handling
 
 Coming Soon:
-- Google Gemini Integration
 - Claude AI Integration
 - Voice Recognition
 - Text-to-Speech
-- Custom UI Components
 - Message Storage
 - And more!
 
@@ -38,7 +38,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  ai_chat_plus: ^1.0.0
+  ai_chat_plus: ^1.0.1
 ```
 
 Then run:
@@ -48,7 +48,7 @@ flutter pub get
 
 ## Usage
 
-Here's a simple example of how to use the AI Chat Plus package with OpenAI:
+### Basic Usage with OpenAI
 
 ```dart
 import 'package:ai_chat_plus/ai_chat_plus.dart';
@@ -57,7 +57,7 @@ import 'package:ai_chat_plus/ai_chat_plus.dart';
 final config = AIModelConfig(
   provider: AIProvider.openAI,
   apiKey: "YOUR_OPENAI_API_KEY",
-  modelId: OpenAIModel.gpt4.modelId,
+  modelId: OpenAIModel.gpt35Turbo.modelId,
 );
 
 // Create and initialize the service
@@ -75,7 +75,121 @@ aiService.streamResponse("Tell me a story").listen(
 );
 ```
 
+### Using with Google Gemini
+
+```dart
+import 'package:ai_chat_plus/ai_chat_plus.dart';
+
+// Initialize with Gemini
+final config = AIModelConfig(
+  provider: AIProvider.googleGemini,
+  apiKey: "YOUR_GEMINI_API_KEY",
+  modelId: GeminiModel.geminiPro.modelId,
+);
+
+final aiService = AIServiceFactory.createService(AIProvider.googleGemini);
+await aiService.initialize(config);
+
+// Generate a response
+final response = await aiService.generateResponse("What is quantum computing?");
+print(response);
+```
+
+### Flutter UI Integration Example
+
+Here's a simple example of how to integrate the chat functionality into a Flutter UI:
+
+```dart
+class ChatScreen extends StatefulWidget {
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  final TextEditingController _controller = TextEditingController();
+  final List<String> _messages = [];
+  late final AIService _aiService;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initAI();
+  }
+
+  Future<void> _initAI() async {
+    final config = AIModelConfig(
+      provider: AIProvider.openAI,
+      apiKey: "YOUR_API_KEY",
+      modelId: OpenAIModel.gpt35Turbo.modelId,
+    );
+    _aiService = AIServiceFactory.createService(AIProvider.openAI);
+    await _aiService.initialize(config);
+  }
+
+  Future<void> _sendMessage() async {
+    if (_controller.text.isEmpty) return;
+
+    setState(() {
+      _messages.add('You: ${_controller.text}');
+      _isLoading = true;
+    });
+
+    final response = await _aiService.generateResponse(_controller.text);
+    
+    setState(() {
+      _messages.add('AI: $response');
+      _isLoading = false;
+    });
+    _controller.clear();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('AI Chat')),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: _messages.length,
+              itemBuilder: (context, index) => ListTile(
+                title: Text(_messages[index]),
+              ),
+            ),
+          ),
+          if (_isLoading) CircularProgressIndicator(),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      hintText: 'Type your message...',
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: _sendMessage,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
 ## Additional Information
+
+- **API Keys**: You'll need to obtain API keys from:
+  - OpenAI: [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+  - Google AI Studio: [https://makersuite.google.com/app/apikey](https://makersuite.google.com/app/apikey)
 
 - **Contributing**: We welcome contributions! Please read our contributing guidelines before submitting pull requests.
 - **Issues**: File issues at the [GitHub repository](https://github.com/jamalihassan0307/ai_chat_plus/issues)
