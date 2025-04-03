@@ -25,7 +25,7 @@ class _GeminiChatPageState extends State<GeminiChatPage> {
     try {
       final config = AIModelConfig(
         provider: AIProvider.gemini,
-        apiKey: 'AIzaSyAsAqrPD5zqjOO_TTQbxTkG9b-ScXm668k',
+        apiKey: 'YOUR_OPENAI_API_KEY',
         modelId: GeminiModel.geminiFlash.modelId,
       );
       _aiService = AIServiceFactory.createService(AIProvider.gemini);
