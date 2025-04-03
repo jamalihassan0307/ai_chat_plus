@@ -34,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
   late final AIChat _aiChat;
   bool _isLoading = false;
   String? _error;
-  AIProvider _currentProvider = AIProvider.openAI;
+  AIProvider _currentProvider = AIProvider.gemini;
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _ChatScreenState extends State<ChatScreen> {
       apiKey: _currentProvider == AIProvider.openAI
           ? 'YOUR_OPENAI_API_KEY'
           : 'YOUR_GEMINI_API_KEY',
-      provider: _currentProvider,
+          assistantModel: 'gpt-3.5-turbo',  
     );
   }
 
