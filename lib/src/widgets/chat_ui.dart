@@ -116,7 +116,7 @@ class _ChatUIState extends State<ChatUI> {
                 BoxShadow(
                   offset: const Offset(0, -2),
                   blurRadius: 4,
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withAlpha(26),
                 ),
               ],
             ),
