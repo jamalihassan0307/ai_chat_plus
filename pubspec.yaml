@@ -40,17 +40,17 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-flutter:
-  plugin:
-    platforms:
-      android:
-        package: com.example.ai_chat_plus
-        pluginClass: AIChatPlusPlugin
-      ios:
-        pluginClass: AIChatPlusPlugin
-      web:
-        pluginClass: AIChatPlusWeb
-        fileName: ai_chat_plus_web.dart
+# flutter:
+#   plugin:
+#     platforms:
+#       android:
+#         package: com.example.ai_chat_plus
+#         pluginClass: AIChatPlusPlugin
+#       ios:
+#         pluginClass: AIChatPlusPlugin
+#       web:
+#         pluginClass: AIChatPlusWeb
+#         fileName: ai_chat_plus_web.dart
      
 
   # To add assets to your package, add an assets section, like this:
