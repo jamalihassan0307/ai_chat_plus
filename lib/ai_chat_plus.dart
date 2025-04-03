@@ -13,18 +13,8 @@ import 'src/widgets/widgets.dart';
 
 /// Main widget for AI Chat Plus
 class AIChat extends StatefulWidget {
-  final String apiKey;
-  final AIProvider provider;
-  final String? modelId;
-  final Color? primaryColor;
-  final Color? backgroundColor;
-  final String? userAvatarUrl;
-  final String? aiAvatarUrl;
-  final InputDecoration? inputDecoration;
-  final TextStyle? messageTextStyle;
-
   const AIChat({
-    Key? key,
+    super.key,
     required this.apiKey,
     required this.provider,
     this.modelId,
@@ -34,7 +24,17 @@ class AIChat extends StatefulWidget {
     this.aiAvatarUrl,
     this.inputDecoration,
     this.messageTextStyle,
-  }) : super(key: key);
+  });
+
+  final String apiKey;
+  final AIProvider provider;
+  final String? modelId;
+  final Color? primaryColor;
+  final Color? backgroundColor;
+  final String? userAvatarUrl;
+  final String? aiAvatarUrl;
+  final InputDecoration? inputDecoration;
+  final TextStyle? messageTextStyle;
 
   @override
   State<AIChat> createState() => _AIChatState();
