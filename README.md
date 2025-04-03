@@ -165,6 +165,43 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 ```
 
+### Using Prebuilt Chat UI (New in 1.0.8)
+
+For quick implementation, you can use our new prebuilt chat UI:
+
+```dart
+AIChat(
+  apiKey: 'YOUR_API_KEY',
+  provider: AIProvider.gemini,
+  modelId: GeminiModel.geminiFlash.modelId,
+  primaryColor: Theme.of(context).primaryColor,
+  backgroundColor: Colors.grey[100],
+  // Optional customization
+  onProviderChanged: (AIProvider newProvider) {
+    // Handle provider change
+    return AIModelConfig(
+      provider: newProvider,
+      apiKey: getApiKeyForProvider(newProvider),
+      modelId: getDefaultModelForProvider(newProvider),
+    );
+  },
+  onError: (error) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(error.toString())),
+    );
+  },
+)
+```
+
+Key features of the prebuilt UI:
+- Built-in provider switching (OpenAI, Gemini, Claude)
+- Customizable themes and styles
+- Error handling and loading states
+- Message bubble customization
+- Input field customization
+
+For detailed customization options, check the example folder in the package repository.
+
 ### Important Notes
 
 1. **API Keys**: 
