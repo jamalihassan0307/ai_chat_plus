@@ -59,7 +59,7 @@ class OpenAIService implements AIService {
     await for (final chunk in stream) {
       final content = chunk.choices.first.delta.content;
       if (content != null && content.isNotEmpty && content.first != null) {
-        yield content.first.text ?? '';
+        yield content.first?.text ?? '';
       }
     }
   }
