@@ -1,8 +1,8 @@
 name: ai_chat_plus
 description: "A Flutter package that provides AI chat functionality with enhanced features and customization options."
-version: 0.0.1
-homepage: https://github.com/yourusername/ai_chat_plus
-repository: https://github.com/yourusername/ai_chat_plus
+version: 1.0.0
+homepage: https://github.com/jamalihassan0307/ai_chat_plus
+repository: https://github.com/jamalihassan0307/ai_chat_plus
 
 environment:
   sdk: ^3.5.3
@@ -11,9 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.2.0
-  provider: ^6.1.1
-  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
