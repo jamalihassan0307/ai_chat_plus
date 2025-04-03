@@ -25,15 +25,16 @@ class _GeminiChatPageState extends State<GeminiChatPage> {
     try {
       final config = AIModelConfig(
         provider: AIProvider.gemini,
-        apiKey: 'YOUR_GEMINI_API_KEY',  // Replace with your Gemini API key
+        apiKey: 'AIzaSyAsAqrPD5zqjOO_TTQbxTkG9b-ScXm668k', 
         modelId: GeminiModel.geminiFlash.modelId,
       );
-
+      print("config $config");
       _aiService = AIServiceFactory.createService(AIProvider.gemini);
       await _aiService.initialize(config);
       setState(() => _error = null);
     } catch (e) {
       setState(() => _error = e.toString());
+      print("error11111 $e");
     }
   }
 
@@ -49,7 +50,9 @@ class _GeminiChatPageState extends State<GeminiChatPage> {
     _controller.clear();
 
     try {
+      print("message $message");
       final response = await _aiService.generateResponse(message);
+      print("response $response");
       setState(() {
         _messages.add('Gemini: $response');
         _isLoading = false;
@@ -57,6 +60,7 @@ class _GeminiChatPageState extends State<GeminiChatPage> {
     } catch (e) {
       setState(() {
         _error = e.toString();
+        print("error2222 $e");
         _isLoading = false;
       });
     }
