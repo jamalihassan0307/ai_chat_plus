@@ -18,10 +18,11 @@ class _TestChatPageState extends State<TestChatPage> {
       // Set default model ID based on provider
       switch (provider) {
         case AIProvider.gemini:
-          _modelId = GeminiModel.geminiFlash.modelId; break;
+          _modelId = GeminiModel.geminiFlash.modelId;
+          break;
         case AIProvider.openAI:
           _modelId = OpenAIModel.gpt35Turbo.modelId;
-         
+
           break;
         case AIProvider.claude:
           _modelId = ClaudeModel.claude3Sonnet.modelId;
@@ -93,4 +94,4 @@ class _TestChatPageState extends State<TestChatPage> {
         return 'YOUR_CLAUDE_API_KEY';
     }
   }
-} 
+}
