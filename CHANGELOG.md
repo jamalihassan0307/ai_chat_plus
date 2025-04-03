@@ -1,3 +1,12 @@
+## 1.0.4
+
+* Added Claude AI integration with full support for text generation
+* Added Claude service implementation with proper error handling
+* Updated documentation with Claude usage examples and API key instructions
+* Added Claude model types (Sonnet, Opus, Haiku)
+* Improved UI components for Claude chat interface
+* Enhanced type safety for Claude service implementation
+
 ## 1.0.3
 
 * Updated documentation with improved usage examples
