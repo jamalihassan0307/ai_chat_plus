@@ -1,3 +1,4 @@
+import 'dart:async';
 import '../models/ai_model.dart';
 
 /// Abstract class defining the interface for AI services
@@ -28,5 +29,39 @@ class AIServiceFactory {
       case AIProvider.custom:
         throw UnimplementedError('Custom AI service not yet implemented');
     }
+  }
+}
+
+class AIChat {
+  final String apiKey;
+  final AIProvider provider;
+  late final AIService _service;
+
+  AIChat({
+    required this.apiKey,
+    required this.provider,
+  }) {
+    _initService();
+  }
+
+  void _initService() {
+    switch (provider) {
+      case AIProvider.openAI:
+        _service = OpenAIService(apiKey: apiKey);
+      case AIProvider.gemini:
+        _service = GeminiService(apiKey: apiKey);
+    }
+  }
+
+  Future<String> generateResponse(String prompt) async {
+    return _service.generateResponse(prompt);
+  }
+
+  Stream<String> streamResponse(String prompt) {
+    return _service.streamResponse(prompt);
+  }
+
+  Future<void> dispose() async {
+    await _service.dispose();
   }
 }
