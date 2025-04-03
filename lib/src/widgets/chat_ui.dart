@@ -28,7 +28,7 @@ class ChatUI extends StatefulWidget {
   final TextStyle? messageTextStyle;
 
   const ChatUI({
-    Key? key,
+    super.key,
     required this.messages,
     required this.onSendMessage,
     this.isTyping = false,
@@ -38,7 +38,7 @@ class ChatUI extends StatefulWidget {
     this.aiAvatarUrl,
     this.inputDecoration,
     this.messageTextStyle,
-  }) : super(key: key);
+  });
 
   @override
   State<ChatUI> createState() => _ChatUIState();
