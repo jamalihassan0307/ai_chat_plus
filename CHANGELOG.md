@@ -1,3 +1,13 @@
+## 1.0.8
+
+* Added Prebuilt Chat UI with customizable components
+* Implemented provider switching in the chat interface
+* Enhanced message handling with improved error feedback
+* Added support for dynamic model selection
+* Improved UI/UX with modern Material 3 design
+* Added example implementation with provider switching
+* Updated documentation with new UI components usage
+
 ## 1.0.7
 
 * Added platform-specific implementations for iOS
