@@ -2,6 +2,7 @@ import 'dart:async';
 import '../models/ai_model.dart';
 import 'openai_service.dart';
 import 'gemini_service.dart';
+import 'claude_service.dart';
 
 /// Abstract class defining the interface for AI services
 abstract class AIService {
@@ -28,6 +29,9 @@ class AIServiceFactory {
       case AIProvider.gemini:
         return GeminiService(
             apiKey: ''); // apiKey will be set during initialize
+      case AIProvider.claude:
+        return ClaudeService(
+            apiKey: ''); // apiKey will be set during initialize
     }
   }
 }
@@ -50,6 +54,8 @@ class AIChat {
         _service = OpenAIService(apiKey: apiKey);
       case AIProvider.gemini:
         _service = GeminiService(apiKey: apiKey);
+      case AIProvider.claude:
+        _service = ClaudeService(apiKey: apiKey);
     }
   }
 
