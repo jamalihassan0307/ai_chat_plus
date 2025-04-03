@@ -40,7 +40,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  ai_chat_plus: ^1.0.3
+  ai_chat_plus: ^1.0.4
 ```
 
 Then run:
@@ -86,6 +86,27 @@ Future<void> initGemini() async {
   
   // Generate response
   final response = await aiService.generateResponse("What is quantum computing?");
+  print(response);
+}
+```
+
+### Using Claude Service
+
+```dart
+import 'package:ai_chat_plus/ai_chat_plus.dart';
+
+Future<void> initClaude() async {
+  final config = AIModelConfig(
+    provider: AIProvider.claude,
+    apiKey: 'YOUR_CLAUDE_API_KEY',
+    modelId: ClaudeModel.claude3Sonnet.modelId,
+  );
+
+  final aiService = AIServiceFactory.createService(AIProvider.claude);
+  await aiService.initialize(config);
+  
+  // Generate response
+  final response = await aiService.generateResponse("What is artificial intelligence?");
   print(response);
 }
 ```
@@ -149,10 +170,12 @@ class _ChatScreenState extends State<ChatScreen> {
 1. **API Keys**: 
    - OpenAI API key: Get from [OpenAI Platform](https://platform.openai.com/api-keys)
    - Gemini API key: Get from [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Claude API key: Get from [Claude AI Platform](https://claude.ai/api-keys)
 
 2. **Available Models**:
    - OpenAI: `gpt35Turbo`, `gpt4`, `gpt4Turbo`
    - Gemini: `geminiFlash`, `geminiPro`, `geminiPro15`
+   - Claude: `claude3Sonnet`, `claude3Opus`, `claude3Haiku`
 
 3. **Error Handling**:
    ```dart
@@ -179,7 +202,7 @@ For complete implementation examples, check the example folder in the package re
 ### Key Features
 
 1. **Provider Selection**
-   - Switch between OpenAI and Gemini providers
+   - Switch between OpenAI, Gemini, and Claude providers
    - Each provider uses its specific model configuration
 
 2. **Error Handling**
@@ -203,11 +226,13 @@ For complete implementation examples, check the example folder in the package re
 1. **API Keys**
    - Replace `YOUR_OPENAI_API_KEY` with your actual OpenAI API key
    - Replace `YOUR_GEMINI_API_KEY` with your actual Gemini API key
+   - Replace `YOUR_CLAUDE_API_KEY` with your actual Claude API key
    - Never commit API keys to version control
 
 2. **Model Selection**
    - OpenAI models: `gpt35Turbo`, `gpt4`, `gpt4Turbo`
    - Gemini models: `geminiFlash`, `geminiPro`, `geminiPro15`
+   - Claude models: `claude3Sonnet`, `claude3Opus`, `claude3Haiku`
 
 3. **Streaming Support**
    - OpenAI supports streaming responses
