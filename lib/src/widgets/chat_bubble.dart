@@ -5,14 +5,18 @@ class ChatBubble extends StatelessWidget {
   final bool isUser;
   final String? avatarUrl;
   final DateTime timestamp;
+  final Color? color;
+  final TextStyle? textStyle;
 
   const ChatBubble({
-    Key? key,
+    super.key,
     required this.message,
     required this.isUser,
     this.avatarUrl,
     required this.timestamp,
-  }) : super(key: key);
+    this.color,
+    this.textStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
