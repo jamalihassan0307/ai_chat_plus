@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ai_chat_plus/ai_chat_plus.dart';
 
 class TestChatPage extends StatefulWidget {
-  const TestChatPage({Key? key}) : super(key: key);
+  const TestChatPage({super.key});
 
   @override
   State<TestChatPage> createState() => _TestChatPageState();
