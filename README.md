@@ -40,7 +40,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  ai_chat_plus: ^1.0.4
+  ai_chat_plus: ^1.0.5
 ```
 
 Then run:
