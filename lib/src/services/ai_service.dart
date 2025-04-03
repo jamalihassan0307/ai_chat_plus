@@ -23,9 +23,11 @@ class AIServiceFactory {
   static AIService createService(AIProvider provider) {
     switch (provider) {
       case AIProvider.openAI:
-        return OpenAIService(apiKey: '');  // apiKey will be set during initialize
+        return OpenAIService(
+            apiKey: ''); // apiKey will be set during initialize
       case AIProvider.gemini:
-        return GeminiService(apiKey: '');  // apiKey will be set during initialize
+        return GeminiService(
+            apiKey: ''); // apiKey will be set during initialize
     }
   }
 }

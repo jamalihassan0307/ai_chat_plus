@@ -20,13 +20,15 @@ class GeminiService implements AIService {
     }
     _apiKey = config.apiKey;
     _model = config.modelId ?? GeminiModel.geminiFlash.modelId;
-    _baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models/$_model:generateContent';
+    _baseUrl =
+        'https://generativelanguage.googleapis.com/v1beta/models/$_model:generateContent';
   }
 
   @override
   Future<String> generateResponse(String prompt) async {
     if (_apiKey == null) {
-      throw StateError('GeminiService not initialized. Call initialize() first.');
+      throw StateError(
+          'GeminiService not initialized. Call initialize() first.');
     }
 
     final url = Uri.parse('$_baseUrl?key=$_apiKey');
@@ -36,9 +38,13 @@ class GeminiService implements AIService {
         url,
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
-          "contents": [{
-            "parts": [{"text": prompt}]
-          }]
+          "contents": [
+            {
+              "parts": [
+                {"text": prompt}
+              ]
+            }
+          ]
         }),
       );
 
@@ -47,7 +53,8 @@ class GeminiService implements AIService {
         final text = data['candidates'][0]['content']['parts'][0]['text'];
         return text ?? 'No response generated';
       } else {
-        throw Exception('Failed to generate response: ${response.statusCode}\n${response.body}');
+        throw Exception(
+            'Failed to generate response: ${response.statusCode}\n${response.body}');
       }
     } catch (e) {
       throw Exception('Gemini Error: $e');
@@ -66,4 +73,4 @@ class GeminiService implements AIService {
   Future<void> dispose() async {
     // No cleanup needed for Gemini
   }
-} 
+}

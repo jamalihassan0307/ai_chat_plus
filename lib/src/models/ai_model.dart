@@ -54,12 +54,12 @@ class AIResponse {
   });
 
   factory AIResponse.fromJson(Map<String, dynamic> json) => AIResponse(
-    text: json['text'] as String,
-    provider: json['provider'] as AIProvider,
-  );
+        text: json['text'] as String,
+        provider: json['provider'] as AIProvider,
+      );
 
   Map<String, dynamic> toJson() => {
-    'text': text,
-    'provider': provider,
-  };
+        'text': text,
+        'provider': provider,
+      };
 }

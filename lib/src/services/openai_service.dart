@@ -28,7 +28,9 @@ class OpenAIService implements AIService {
         model: 'gpt-3.5-turbo',
         messages: [
           OpenAIChatCompletionChoiceMessageModel(
-            content: [OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)],
+            content: [
+              OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)
+            ],
             role: OpenAIChatMessageRole.user,
           ),
         ],
@@ -47,7 +49,9 @@ class OpenAIService implements AIService {
         model: 'gpt-3.5-turbo',
         messages: [
           OpenAIChatCompletionChoiceMessageModel(
-            content: [OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)],
+            content: [
+              OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)
+            ],
             role: OpenAIChatMessageRole.user,
           ),
         ],
