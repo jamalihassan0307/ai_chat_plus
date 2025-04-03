@@ -70,7 +70,7 @@ A Flutter package that provides AI chat functionality with enhanced features inc
 ## Features
 
 Currently Implemented:
-- 🤖 OpenAI GPT Integration (3.5/4/4-turbo)
+- 🤖 OpenAI GPT Integration (3.5/4.4-turbo)
 - 🧠 Google Gemini Integration
 - 🔄 Streaming responses support
 - 🎯 Type-safe API
