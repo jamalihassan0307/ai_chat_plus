@@ -10,6 +10,11 @@ class GeminiService implements AIService {
   GeminiService({required this.apiKey});
 
   @override
+  Future<void> initialize() async {
+    // No initialization needed for Gemini
+  }
+
+  @override
   Future<String> generateResponse(String prompt) async {
     final url = Uri.parse('$_baseUrl?key=$apiKey');
 
