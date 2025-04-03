@@ -11,29 +11,63 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# AI Chat Plus
+
+A Flutter package that provides AI chat functionality with enhanced features and customization options. This package makes it easy to integrate AI-powered chat capabilities into your Flutter applications.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- 🤖 Easy integration with AI chat services
+- 🎨 Customizable chat UI components
+- 💾 Built-in message persistence
+- 🔄 State management using Provider
+- 🎯 Type-safe API
+- 📱 Responsive design
+- 🌐 Network handling with retry mechanisms
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add this to your package's `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  ai_chat_plus: ^0.0.1
+```
+
+Then run:
+```bash
+flutter pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Here's a simple example of how to use the AI Chat Plus package:
 
 ```dart
-const like = 'sample';
+import 'package:ai_chat_plus/ai_chat_plus.dart';
+
+// Initialize the chat
+final chatController = AIChatController();
+
+// Use in your widget
+AIChatWidget(
+  controller: chatController,
+  theme: AIChatTheme.light(),
+  onMessageSent: (message) {
+    // Handle message
+  },
+)
 ```
+
+For more examples, please see the `/example` directory in the repository.
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+- **Contributing**: We welcome contributions! Please read our contributing guidelines before submitting pull requests.
+- **Issues**: File issues at the [GitHub repository](https://github.com/yourusername/ai_chat_plus/issues)
+- **Documentation**: For detailed documentation, visit our [documentation site](https://github.com/yourusername/ai_chat_plus/wiki)
+- **License**: This project is licensed under the MIT License - see the LICENSE file for details
+
+## Support
+
+If you find this package helpful, please give it a star on [GitHub](https://github.com/yourusername/ai_chat_plus)!
