@@ -1,3 +1,10 @@
+## 1.0.5
+
+* Updated dependencies to latest compatible versions
+* Fixed SDK compatibility issues with freezed package
+* Improved package stability and performance
+* Enhanced documentation clarity
+
 ## 1.0.4
 
 * Added Claude AI integration with full support for text generation
