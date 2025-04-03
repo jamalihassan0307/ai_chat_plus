@@ -25,7 +25,7 @@ class _OpenAIChatPageState extends State<OpenAIChatPage> {
     try {
       final config = AIModelConfig(
         provider: AIProvider.openAI,
-        apiKey: 'YOUR_OPENAI_API_KEY',  // Replace with your OpenAI API key
+        apiKey: 'YOUR_OPENAI_API_KEY', // Replace with your OpenAI API key
         modelId: OpenAIModel.gpt35Turbo.modelId,
       );
 
@@ -94,14 +94,16 @@ class _OpenAIChatPageState extends State<OpenAIChatPage> {
               itemBuilder: (context, index) {
                 final message = _messages[index];
                 final isUser = message.startsWith('You: ');
-                
+
                 return Align(
-                  alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
+                  alignment:
+                      isUser ? Alignment.centerRight : Alignment.centerLeft,
                   child: Container(
                     margin: const EdgeInsets.symmetric(vertical: 4),
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: isUser ? Colors.blue.shade100 : Colors.grey.shade200,
+                      color:
+                          isUser ? Colors.blue.shade100 : Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(message),
@@ -141,4 +143,4 @@ class _OpenAIChatPageState extends State<OpenAIChatPage> {
       ),
     );
   }
-} 
+}

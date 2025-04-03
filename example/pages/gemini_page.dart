@@ -25,7 +25,7 @@ class _GeminiChatPageState extends State<GeminiChatPage> {
     try {
       final config = AIModelConfig(
         provider: AIProvider.gemini,
-        apiKey: 'AIzaSyAsAqrPD5zqjOO_TTQbxTkG9b-ScXm668k', 
+        apiKey: 'AIzaSyAsAqrPD5zqjOO_TTQbxTkG9b-ScXm668k',
         modelId: GeminiModel.geminiFlash.modelId,
       );
       _aiService = AIServiceFactory.createService(AIProvider.gemini);
@@ -93,14 +93,17 @@ class _GeminiChatPageState extends State<GeminiChatPage> {
               itemBuilder: (context, index) {
                 final message = _messages[index];
                 final isUser = message.startsWith('You: ');
-                
+
                 return Align(
-                  alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
+                  alignment:
+                      isUser ? Alignment.centerRight : Alignment.centerLeft,
                   child: Container(
                     margin: const EdgeInsets.symmetric(vertical: 4),
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: isUser ? Colors.blue.shade100 : Colors.deepPurple.shade50,
+                      color: isUser
+                          ? Colors.blue.shade100
+                          : Colors.deepPurple.shade50,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(message),
@@ -140,4 +143,4 @@ class _GeminiChatPageState extends State<GeminiChatPage> {
       ),
     );
   }
-} 
+}
