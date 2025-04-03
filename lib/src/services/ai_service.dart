@@ -1,5 +1,7 @@
 import 'dart:async';
 import '../models/ai_model.dart';
+import 'openai_service.dart';
+import 'gemini_service.dart';
 
 /// Abstract class defining the interface for AI services
 abstract class AIService {
@@ -22,12 +24,8 @@ class AIServiceFactory {
     switch (provider) {
       case AIProvider.openAI:
         throw UnimplementedError('OpenAI service not yet implemented');
-      case AIProvider.googleGemini:
-        throw UnimplementedError('Google Gemini service not yet implemented');
-      case AIProvider.claude:
-        throw UnimplementedError('Claude service not yet implemented');
-      case AIProvider.custom:
-        throw UnimplementedError('Custom AI service not yet implemented');
+      case AIProvider.gemini:
+        throw UnimplementedError('Gemini service not yet implemented');
     }
   }
 }
