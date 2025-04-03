@@ -170,7 +170,7 @@ class _ChatScreenState extends State<ChatScreen> {
 1. **API Keys**: 
    - OpenAI API key: Get from [OpenAI Platform](https://platform.openai.com/api-keys)
    - Gemini API key: Get from [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Claude API key: Get from [Claude AI Platform](https://claude.ai/api-keys)
+   - Claude API key: Get from [Claude AI Platform](https://docs.anthropic.com/en/api/getting-started)
 
 2. **Available Models**:
    - OpenAI: `gpt35Turbo`, `gpt4`, `gpt4Turbo`
