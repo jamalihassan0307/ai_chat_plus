@@ -57,7 +57,7 @@ import 'package:ai_chat_plus/ai_chat_plus.dart';
 final config = AIModelConfig(
   provider: AIProvider.openAI,
   apiKey: "YOUR_OPENAI_API_KEY",
-  modelId: OpenAIModel.gpt35Turbo.modelId,
+  modelId: OpenAIModel.gpt35Turbo.modelId, // or gpt4, gpt4Turbo
 );
 
 // Create and initialize the service
@@ -75,57 +75,40 @@ aiService.streamResponse("Tell me a story").listen(
 );
 ```
 
-### Using with Google Gemini 1.5 Flash
+### Using with Google Gemini
 
 ```dart
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:ai_chat_plus/ai_chat_plus.dart';
 
-Future<String> generateGeminiResponse(String prompt) async {
-  final apiKey = 'YOUR_GEMINI_API_KEY';
-  final url = Uri.parse(
-    'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey'
-  );
+// Initialize with Gemini
+final config = AIModelConfig(
+  provider: AIProvider.gemini,
+  apiKey: "YOUR_GEMINI_API_KEY",
+  modelId: GeminiModel.geminiFlash.modelId, // or geminiPro, geminiPro15
+);
 
-  try {
-    final response = await http.post(
-      url,
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        "contents": [{
-          "parts": [{"text": prompt}]
-        }]
-      }),
-    );
+// Create and initialize the service
+final aiService = AIServiceFactory.createService(AIProvider.gemini);
+await aiService.initialize(config);
 
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      return data['candidates'][0]['content']['parts'][0]['text'];
-    } else {
-      throw Exception('Failed to generate response: ${response.statusCode}');
-    }
-  } catch (e) {
-    throw Exception('Error generating response: $e');
-  }
-}
+// Generate a response
+final response = await aiService.generateResponse("What is quantum computing?");
+print(response);
 
-// Usage example
-void main() async {
-  try {
-    final response = await generateGeminiResponse("What is quantum computing?");
-    print(response);
-  } catch (e) {
-    print('Error: $e');
-  }
-}
+// Note: Streaming is not yet supported for Gemini Flash model
 ```
 
-### Flutter UI Integration Example
+### Complete Flutter Example
 
-Here's a simple example of how to integrate the chat functionality into a Flutter UI:
+Here's a complete example showing how to create a chat application with support for both OpenAI and Gemini:
 
 ```dart
+import 'package:flutter/material.dart';
+import 'package:ai_chat_plus/ai_chat_plus.dart';
+
 class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
+
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
@@ -135,6 +118,8 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<String> _messages = [];
   late final AIService _aiService;
   bool _isLoading = false;
+  String? _error;
+  AIProvider _currentProvider = AIProvider.gemini;
 
   @override
   void initState() {
@@ -143,62 +128,142 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _initAI() async {
-    final config = AIModelConfig(
-      provider: AIProvider.openAI,
-      apiKey: "YOUR_API_KEY",
-      modelId: OpenAIModel.gpt35Turbo.modelId,
-    );
-    _aiService = AIServiceFactory.createService(AIProvider.openAI);
-    await _aiService.initialize(config);
+    try {
+      final config = AIModelConfig(
+        provider: _currentProvider,
+        apiKey: _currentProvider == AIProvider.openAI
+            ? "YOUR_OPENAI_API_KEY"
+            : "YOUR_GEMINI_API_KEY",
+        modelId: _currentProvider == AIProvider.openAI
+            ? OpenAIModel.gpt35Turbo.modelId
+            : GeminiModel.geminiFlash.modelId,
+      );
+
+      _aiService = AIServiceFactory.createService(_currentProvider);
+      await _aiService.initialize(config);
+      setState(() => _error = null);
+    } catch (e) {
+      setState(() => _error = e.toString());
+    }
+  }
+
+  void _switchProvider() {
+    setState(() {
+      _currentProvider = _currentProvider == AIProvider.openAI
+          ? AIProvider.gemini
+          : AIProvider.openAI;
+      _initAI();
+    });
   }
 
   Future<void> _sendMessage() async {
     if (_controller.text.isEmpty) return;
 
+    final message = _controller.text;
     setState(() {
-      _messages.add('You: ${_controller.text}');
+      _messages.add('You: $message');
       _isLoading = true;
-    });
-
-    final response = await _aiService.generateResponse(_controller.text);
-    
-    setState(() {
-      _messages.add('AI: $response');
-      _isLoading = false;
+      _error = null;
     });
     _controller.clear();
+
+    try {
+      final response = await _aiService.generateResponse(message);
+      setState(() {
+        _messages.add('${_currentProvider == AIProvider.openAI ? "OpenAI" : "Gemini"}: $response');
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _error = e.toString();
+        _isLoading = false;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _aiService.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('AI Chat')),
+      appBar: AppBar(
+        title: Text('${_currentProvider == AIProvider.openAI ? "OpenAI" : "Gemini"} Chat'),
+        actions: [
+          IconButton(
+            icon: Icon(_currentProvider == AIProvider.openAI
+                ? Icons.psychology
+                : Icons.chat_bubble),
+            onPressed: _switchProvider,
+            tooltip: 'Switch to ${_currentProvider == AIProvider.openAI ? "Gemini" : "OpenAI"}',
+          ),
+        ],
+      ),
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: _messages.length,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(_messages[index]),
+          if (_error != null)
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Colors.red.shade100,
+              child: Text(
+                'Error: $_error',
+                style: const TextStyle(color: Colors.red),
               ),
             ),
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: _messages.length,
+              itemBuilder: (context, index) {
+                final message = _messages[index];
+                final isUser = message.startsWith('You: ');
+                
+                return Align(
+                  alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 4),
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: isUser
+                          ? Colors.blue.shade100
+                          : (_currentProvider == AIProvider.openAI
+                              ? Colors.grey.shade200
+                              : Colors.deepPurple.shade50),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(message),
+                  ),
+                );
+              },
+            ),
           ),
-          if (_isLoading) CircularProgressIndicator(),
+          if (_isLoading)
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: CircularProgressIndicator(),
+            ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 Expanded(
                   child: TextField(
                     controller: _controller,
                     decoration: InputDecoration(
-                      hintText: 'Type your message...',
+                      hintText: 'Ask ${_currentProvider == AIProvider.openAI ? "OpenAI" : "Gemini"} something...',
+                      border: const OutlineInputBorder(),
                     ),
+                    onSubmitted: (_) => _sendMessage(),
                   ),
                 ),
+                const SizedBox(width: 8),
                 IconButton(
-                  icon: Icon(Icons.send),
                   onPressed: _sendMessage,
+                  icon: const Icon(Icons.send),
                 ),
               ],
             ),
@@ -209,6 +274,48 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 ```
+
+### Key Features
+
+1. **Provider Selection**
+   - Switch between OpenAI and Gemini providers
+   - Each provider uses its specific model configuration
+
+2. **Error Handling**
+   - Proper initialization error handling
+   - Message sending error handling
+   - Visual error feedback
+
+3. **UI Features**
+   - Beautiful message bubbles
+   - Different colors for user and AI messages
+   - Loading indicators
+   - Provider-specific styling
+
+4. **Service Management**
+   - Proper service initialization
+   - Resource cleanup on dispose
+   - API key configuration
+
+### Important Notes
+
+1. **API Keys**
+   - Replace `YOUR_OPENAI_API_KEY` with your actual OpenAI API key
+   - Replace `YOUR_GEMINI_API_KEY` with your actual Gemini API key
+   - Never commit API keys to version control
+
+2. **Model Selection**
+   - OpenAI models: `gpt35Turbo`, `gpt4`, `gpt4Turbo`
+   - Gemini models: `geminiFlash`, `geminiPro`, `geminiPro15`
+
+3. **Streaming Support**
+   - OpenAI supports streaming responses
+   - Gemini Flash currently doesn't support streaming
+
+4. **Error Handling**
+   - Always wrap service calls in try-catch blocks
+   - Handle initialization errors
+   - Provide user feedback for errors
 
 ## Additional Information
 
