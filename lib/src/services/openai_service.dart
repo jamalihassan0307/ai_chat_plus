@@ -27,7 +27,9 @@ class OpenAIService implements AIService {
       model: _modelId!,
       messages: [
         OpenAIChatCompletionChoiceMessageModel(
-          content: prompt,
+          content: [
+            OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)
+          ],
           role: OpenAIChatMessageRole.user,
         ),
       ],
@@ -44,7 +46,9 @@ class OpenAIService implements AIService {
       model: _modelId!,
       messages: [
         OpenAIChatCompletionChoiceMessageModel(
-          content: prompt,
+          content: [
+            OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt)
+          ],
           role: OpenAIChatMessageRole.user,
         ),
       ],
