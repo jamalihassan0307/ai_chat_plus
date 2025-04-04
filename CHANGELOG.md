@@ -1,3 +1,27 @@
+## 1.1.1
+
+### New Features
+* Added customizable chat UI components with light, dark, and custom themes
+* Implemented real-time provider switching in chat interface
+* Added enhanced message handling with typing indicators
+* Improved error handling with user-friendly notifications
+* Added support for attachments in custom chat UI
+* Enhanced theme customization options
+
+### Improvements
+* Optimized AI service initialization and disposal
+* Enhanced state management for chat UI components
+* Improved cross-provider compatibility
+* Added better error recovery for API failures
+* Enhanced code documentation for new UI components
+
+### Bug Fixes
+* Fixed unused build context warnings in chat pages
+* Improved error handling in message processing
+* Enhanced API key management security
+* Fixed provider switching issues
+* Optimized resource cleanup on widget disposal
+
 ## 1.1.0
 
 ### Major Updates
