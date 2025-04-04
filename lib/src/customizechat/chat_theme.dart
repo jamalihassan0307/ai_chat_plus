@@ -53,37 +53,37 @@ class ChatTheme {
 
   // Dark theme factory
   factory ChatTheme.dark() {
-    return const ChatTheme(
+    return  ChatTheme(
       primaryColor: Colors.blue,
-      backgroundColor: Color(0xFF1A1A1A),
-      userBubbleGradient: LinearGradient(
+      backgroundColor: const Color(0xFF1A1A1A),
+      userBubbleGradient: const LinearGradient(
         colors: [Color(0xFF2196F3), Color(0xFF1976D2)],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
-      aiBubbleColor: Color(0xFF2D2D2D),
+      aiBubbleColor: const Color(0xFF2D2D2D),
       userTextColor: Colors.white,
       aiTextColor: Colors.white,
-      messageTextStyle: TextStyle(
+      messageTextStyle: const TextStyle(
         fontSize: 16,
         height: 1.4,
         fontWeight: FontWeight.w400,
       ),
-      timestampTextStyle: TextStyle(
+      timestampTextStyle: const TextStyle(
         color: Colors.grey,
         fontSize: 12,
       ),
       bubbleShadow: BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.2),
+        color: Colors.black.withAlpha(51), // 0.2 * 255 ≈ 51
         blurRadius: 8,
-        offset: Offset(0, 2),
+        offset: const Offset(0, 2),
       ),
-      inputDecoration: BoxDecoration(
+      inputDecoration: const BoxDecoration(
         color: Color(0xFF2D2D2D),
       ),
       inputTextColor: Colors.white,
-      inputBackgroundColor: Color(0xFF3D3D3D),
-      sendButtonTheme: IconThemeData(color: Colors.blue),
+      inputBackgroundColor: const Color(0xFF3D3D3D),
+      sendButtonTheme: const IconThemeData(color: Colors.blue),
     );
   }
 
@@ -105,18 +105,18 @@ class ChatTheme {
         height: 1.4,
         fontWeight: FontWeight.w400,
       ),
-      bubbleShadow: const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.05),
+      bubbleShadow:  BoxShadow(
+        color: Colors.black.withAlpha(51), // 0.05 * 255 ≈ 13
         blurRadius: 8,
-        offset: Offset(0, 2),
+        offset: const Offset(0, 2),
       ),
-      inputDecoration: const BoxDecoration(
+      inputDecoration:  BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.05),
+            color: Colors.black.withAlpha(51), // 0.05 * 255 ≈ 13
             blurRadius: 8,
-            offset: Offset(0, -2),
+            offset: const Offset(0, -2),
           ),
         ],
       ),
