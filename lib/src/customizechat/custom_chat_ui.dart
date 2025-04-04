@@ -79,7 +79,7 @@ class _CustomChatUIState extends State<CustomChatUI>
 
   void _scrollToBottom() {
     if (!_scrollController.hasClients) return;
-    
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
@@ -190,7 +190,6 @@ class _CustomChatUIState extends State<CustomChatUI>
                   icon: const Icon(Icons.send),
                   color: Colors.white,
                   iconSize: widget.theme.sendButtonTheme.size ?? 24,
-
                   onPressed: _canSendMessage
                       ? () => _handleSubmitted(_textController.text)
                       : null,
@@ -210,4 +209,4 @@ class _CustomChatUIState extends State<CustomChatUI>
     widget.onSendMessage(trimmedText);
     _textController.clear();
   }
-} 
+}

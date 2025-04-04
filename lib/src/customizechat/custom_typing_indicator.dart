@@ -125,4 +125,4 @@ class _CustomTypingIndicatorState extends State<CustomTypingIndicator>
       ),
     );
   }
-} 
+}

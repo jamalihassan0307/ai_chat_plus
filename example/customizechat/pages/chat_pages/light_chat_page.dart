@@ -143,4 +143,4 @@ class _LightChatPageState extends State<LightChatPage> {
     });
     await _initializeService();
   }
-} 
+}

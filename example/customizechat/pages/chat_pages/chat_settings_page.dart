@@ -165,7 +165,8 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
                 title: 'Input Background Color',
                 color: _currentTheme.inputBackgroundColor,
                 onColorChanged: (color) {
-                  _updateTheme(_currentTheme.copyWith(inputBackgroundColor: color));
+                  _updateTheme(
+                      _currentTheme.copyWith(inputBackgroundColor: color));
                 },
               ),
               _buildColorPicker(
@@ -371,4 +372,4 @@ class ColorPicker extends StatelessWidget {
       },
     );
   }
-} 
+}

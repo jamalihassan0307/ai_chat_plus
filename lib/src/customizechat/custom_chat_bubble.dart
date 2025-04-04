@@ -21,7 +21,8 @@ class CustomChatBubble extends StatefulWidget {
   State<CustomChatBubble> createState() => _CustomChatBubbleState();
 }
 
-class _CustomChatBubbleState extends State<CustomChatBubble> with SingleTickerProviderStateMixin {
+class _CustomChatBubbleState extends State<CustomChatBubble>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<double> _fadeAnimation;
@@ -66,8 +67,9 @@ class _CustomChatBubbleState extends State<CustomChatBubble> with SingleTickerPr
           const SizedBox(width: 8),
           Flexible(
             child: Column(
-              crossAxisAlignment:
-                  widget.isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+              crossAxisAlignment: widget.isUser
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
               children: [
                 ScaleTransition(
                   scale: _scaleAnimation,
@@ -142,7 +144,8 @@ class _CustomChatBubbleState extends State<CustomChatBubble> with SingleTickerPr
         backgroundColor: widget.isUser
             ? widget.theme.userBubbleColor.withOpacity(0.3)
             : widget.theme.aiBubbleColor,
-        backgroundImage: widget.avatarUrl != null ? NetworkImage(widget.avatarUrl!) : null,
+        backgroundImage:
+            widget.avatarUrl != null ? NetworkImage(widget.avatarUrl!) : null,
         child: widget.avatarUrl == null
             ? Icon(
                 widget.isUser ? Icons.person : Icons.smart_toy,
@@ -159,4 +162,4 @@ class _CustomChatBubbleState extends State<CustomChatBubble> with SingleTickerPr
   String _formatTime(DateTime time) {
     return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
   }
-} 
+}

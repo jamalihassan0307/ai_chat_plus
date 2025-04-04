@@ -224,4 +224,4 @@ class _CustomChatPageState extends State<CustomChatPage> {
     });
     await _initializeService();
   }
-} 
+}

@@ -143,4 +143,4 @@ class _DarkChatPageState extends State<DarkChatPage> {
     });
     await _initializeService();
   }
-} 
+}

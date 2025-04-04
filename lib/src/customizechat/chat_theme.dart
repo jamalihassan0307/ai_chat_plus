@@ -187,4 +187,4 @@ class ChatTheme {
       bubbleAnimation: bubbleAnimation ?? this.bubbleAnimation,
     );
   }
-} 
+}
