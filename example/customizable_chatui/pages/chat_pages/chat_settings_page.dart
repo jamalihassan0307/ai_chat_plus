@@ -143,7 +143,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
                   _updateTheme(_currentTheme.copyWith(
                     bubbleShadow: value
                         ? BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Color.fromRGBO(0, 0, 0, 0.1),
                             blurRadius: 8,
                             offset: const Offset(0, 2),
                           )
@@ -212,7 +212,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
                         end: Alignment.bottomRight,
                       ),
                       bubbleShadow: BoxShadow(
-                        color: Colors.purple.withOpacity(0.1),
+                        color: Color.fromRGBO(156, 39, 176, .1),
                         blurRadius: 8,
                         offset: const Offset(0, 2),
                       ),
