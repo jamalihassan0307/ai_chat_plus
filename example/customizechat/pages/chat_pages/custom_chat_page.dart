@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:ai_chat_plus/ai_chat_plus.dart';
 import 'package:ai_chat_plus/src/customizechat/widgets.dart';
