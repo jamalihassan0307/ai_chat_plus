@@ -133,7 +133,7 @@ class _CustomChatBubbleState extends State<CustomChatBubble>
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color:  Color.fromRGBO(0, 0, 0, 0.1),
+            color: Color.fromRGBO(0, 0, 0, 0.1),
             blurRadius: 4,
             offset: Offset(0, 2),
           ),
