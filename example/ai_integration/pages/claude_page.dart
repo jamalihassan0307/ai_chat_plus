@@ -114,11 +114,11 @@ class _ClaudeChatPageState extends State<ClaudeChatPage> {
                       decoration: BoxDecoration(
                         color: isUser ? Colors.teal.shade100 : Colors.white,
                         borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Color.fromRGBO(0, 0, 0, 0.1),
                             blurRadius: 4,
-                            offset: const Offset(0, 2),
+                            offset: Offset(0, 2),
                           ),
                         ],
                       ),
@@ -137,13 +137,13 @@ class _ClaudeChatPageState extends State<ClaudeChatPage> {
               ),
             Container(
               padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Color.fromRGBO(0, 0, 0, 0.1),
                     blurRadius: 4,
-                    offset: const Offset(0, -2),
+                    offset: Offset(0, -2),
                   ),
                 ],
               ),
