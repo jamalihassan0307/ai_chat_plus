@@ -1,3 +1,12 @@
+## 1.1.2
+
+### Bug Fixes
+* Fixed deprecated color opacity usage in chat theme
+* Updated to use Color.fromRGBO for better color handling
+* Enhanced theme customization documentation
+* Improved example implementation structure
+* Fixed layout issues in color picker dialog
+
 ## 1.1.1
 
 ### New Features
