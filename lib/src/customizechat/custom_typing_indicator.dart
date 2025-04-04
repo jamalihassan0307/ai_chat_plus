@@ -109,11 +109,7 @@ class _CustomTypingIndicatorState extends State<CustomTypingIndicator>
                             width: widget.dotSize,
                             height: widget.dotSize,
                             decoration: BoxDecoration(
-                              color: Color.fromRGBO(
-                                  widget.theme.aiTextColor.red,
-                                  widget.theme.aiTextColor.green,
-                                  widget.theme.aiTextColor.blue,
-                                  0.7),
+                              color: widget.theme.aiTextColor.withAlpha(179), // 0.7 * 255 ≈ 179
                               shape: BoxShape.circle,
                             ),
                           ),
