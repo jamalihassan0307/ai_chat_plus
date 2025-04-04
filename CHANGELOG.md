@@ -1,3 +1,19 @@
+## 1.2.0
+
+### Major Updates
+* Enhanced AI service integration with improved performance
+* Optimized message handling and response processing
+* Improved cross-provider compatibility and switching
+* Updated UI components with modern design patterns
+* Enhanced error handling and recovery mechanisms
+
+### New Features
+* Improved type safety across all providers
+* Enhanced state management for chat components
+* Optimized resource usage and cleanup
+* Added comprehensive error reporting
+* Enhanced documentation and examples
+
 ## 1.1.6
 
 ### Improvements
