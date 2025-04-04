@@ -129,25 +129,20 @@ class _CustomChatBubbleState extends State<CustomChatBubble>
 
   Widget _buildAvatar() {
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.1),
+            color: Colors.black.withAlpha(26),
             blurRadius: 4,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
       child: CircleAvatar(
         radius: widget.theme.avatarRadius,
         backgroundColor: widget.isUser
-            ? Color.fromARGB(
-                (0.3 * 255).round(),
-                widget.theme.userBubbleColor.red,
-                widget.theme.userBubbleColor.green,
-                widget.theme.userBubbleColor.blue,
-              )
+            ? widget.theme.userBubbleColor.withAlpha(51)
             : widget.theme.aiBubbleColor,
         backgroundImage:
             widget.avatarUrl != null ? NetworkImage(widget.avatarUrl!) : null,
