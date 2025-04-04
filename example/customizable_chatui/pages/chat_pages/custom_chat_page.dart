@@ -55,14 +55,14 @@ class _CustomChatPageState extends State<CustomChatPage> {
         vertical: 12,
       ),
       avatarRadius: 24,
-      inputDecoration: BoxDecoration(
+      inputDecoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.all(Radius.circular(30)),
+        borderRadius: BorderRadius.all(Radius.circular(30)),
         boxShadow: [
           BoxShadow(
-            color: Colors.purple.withOpacity(0.1),
+            color: Color.fromRGBO(156, 39, 176, 0.1),
             blurRadius: 8,
-            offset: const Offset(0, -2),
+            offset: Offset(0, -2),
           ),
         ],
       ),
@@ -72,10 +72,10 @@ class _CustomChatPageState extends State<CustomChatPage> {
         color: Colors.purple,
         size: 28,
       ),
-      bubbleShadow: BoxShadow(
-        color: Colors.purple.withOpacity(0.1),
+      bubbleShadow: const BoxShadow(
+        color: Color.fromRGBO(156, 39, 176, 0.1),
         blurRadius: 8,
-        offset: const Offset(0, 2),
+        offset: Offset(0, 2),
       ),
     );
   }
