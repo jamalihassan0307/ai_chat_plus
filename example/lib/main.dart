@@ -69,7 +69,6 @@ class _ChatDemoState extends State<ChatDemo> {
         apiKey: _getApiKey(_currentProvider),
         provider: _currentProvider,
         modelId: _modelId,
-      
       ),
     );
   }
@@ -95,4 +94,4 @@ class _ChatDemoState extends State<ChatDemo> {
         return ClaudeModel.claude3Sonnet.modelId;
     }
   }
-} 
+}
