@@ -16,7 +16,6 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            
             const SizedBox(height: 16),
             _buildThemeCard(
               context,

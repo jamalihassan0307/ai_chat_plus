@@ -280,7 +280,6 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
                       height: 300,
                       child: ColorPicker(
                         pickerColor: color,
-
                         onColorChanged: onColorChanged,
                       ),
                     ),
@@ -397,7 +396,9 @@ class ColorPicker extends StatelessWidget {
                 color: colors[index],
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: pickerColor == colors[index] ? Colors.white : Colors.transparent,
+                  color: pickerColor == colors[index]
+                      ? Colors.white
+                      : Colors.transparent,
                   width: 2,
                 ),
               ),
