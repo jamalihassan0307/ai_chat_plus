@@ -1,5 +1,5 @@
 name: ai_chat_plus
-description: "A cutting-edge Flutter chat experience with seamless AI integration. Features real-time interactions, and intelligent responses powered by OpenAI, Gemini, and Claude. Crafted with precision by Jamalihassan0307."
+description: "A Flutter package by jamalihassan0307 for seamless AI chat integration. Features OpenAI, Gemini, and Claude support with type-safe implementation."
 version: 1.1.6
 homepage: https://github.com/jamalihassan0307/ai_chat_plus
 repository: https://github.com/jamalihassan0307/ai_chat_plus
@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  # AI Model Integration
+  # AI Model Integration by jamalihassan0307
   dart_openai: ^5.1.0
   google_generative_ai: ^0.4.6
   http: ^1.3.0
