@@ -1,0 +1,19 @@
+name: demo
+description: "A Flutter package by jamalihassan0307 for seamless AI chat integration. Features OpenAI, Gemini, and Claude support with type-safe implementation."
+
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"  # Relaxed SDK constraint
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # AI Model Integration by jamalihassan0307
+  ai_chat_plus:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
