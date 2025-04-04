@@ -204,7 +204,6 @@ class _CustomChatUIState extends State<CustomChatUI>
 
   void _handleSubmitted(String text) {
     final trimmedText = text.trim();
-    print('Sending message: $trimmedText');
     if (trimmedText.isEmpty) return;
     widget.onSendMessage(trimmedText);
     _textController.clear();
