@@ -1,3 +1,12 @@
+## 1.2.1
+
+### Improvements
+* Fixed color property deprecation warnings in chat bubble
+* Updated color handling to use modern Flutter color APIs
+* Enhanced compatibility with latest Flutter versions
+* Improved code quality and static analysis score
+* Updated dependencies to latest compatible versions
+
 ## 1.2.0
 
 ### Major Updates
