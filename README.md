@@ -76,6 +76,11 @@ Currently Implemented:
 - 🎯 Type-safe API
 - 📱 Easy integration with beautiful UI components
 - ⚡ Fast and efficient message handling
+- 🎨 Customizable chat UI themes (Light/Dark/Custom)
+- 🔄 Real-time provider switching
+- 📎 Attachment support in custom chat
+- ⌨️ Typing indicators
+- 🚨 Enhanced error handling
 
 Coming Soon:
 - Claude AI Integration
@@ -92,7 +97,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  ai_chat_plus: ^1.1.0
+  ai_chat_plus: ^1.1.1
 ```
 
 Then run:
