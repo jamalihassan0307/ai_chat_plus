@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:ai_chat_plus/ai_chat_plus.dart';
