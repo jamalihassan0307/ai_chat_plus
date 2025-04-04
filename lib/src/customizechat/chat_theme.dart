@@ -53,37 +53,37 @@ class ChatTheme {
 
   // Dark theme factory
   factory ChatTheme.dark() {
-    return ChatTheme(
+    return const ChatTheme(
       primaryColor: Colors.blue,
-      backgroundColor: const Color(0xFF1A1A1A),
-      userBubbleGradient: const LinearGradient(
+      backgroundColor: Color(0xFF1A1A1A),
+      userBubbleGradient: LinearGradient(
         colors: [Color(0xFF2196F3), Color(0xFF1976D2)],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
-      aiBubbleColor: const Color(0xFF2D2D2D),
+      aiBubbleColor: Color(0xFF2D2D2D),
       userTextColor: Colors.white,
       aiTextColor: Colors.white,
-      messageTextStyle: const TextStyle(
+      messageTextStyle: TextStyle(
         fontSize: 16,
         height: 1.4,
         fontWeight: FontWeight.w400,
       ),
-      timestampTextStyle: const TextStyle(
+      timestampTextStyle: TextStyle(
         color: Colors.grey,
         fontSize: 12,
       ),
       bubbleShadow: BoxShadow(
-        color: Colors.black.withOpacity(0.2),
+        color: Color.fromRGBO(0, 0, 0, 0.2),
         blurRadius: 8,
-        offset: const Offset(0, 2),
+        offset: Offset(0, 2),
       ),
-      inputDecoration: const BoxDecoration(
+      inputDecoration: BoxDecoration(
         color: Color(0xFF2D2D2D),
       ),
       inputTextColor: Colors.white,
-      inputBackgroundColor: const Color(0xFF3D3D3D),
-      sendButtonTheme: const IconThemeData(color: Colors.blue),
+      inputBackgroundColor: Color(0xFF3D3D3D),
+      sendButtonTheme: IconThemeData(color: Colors.blue),
     );
   }
 
@@ -105,10 +105,10 @@ class ChatTheme {
         height: 1.4,
         fontWeight: FontWeight.w400,
       ),
-      bubbleShadow: BoxShadow(
-        color: Colors.black.withOpacity(0.05),
+      bubbleShadow: const BoxShadow(
+        color: Color.fromRGBO(0, 0, 0, 0.05),
         blurRadius: 8,
-        offset: const Offset(0, 2),
+        offset: Offset(0, 2),
       ),
       inputDecoration: BoxDecoration(
         color: Colors.white,
