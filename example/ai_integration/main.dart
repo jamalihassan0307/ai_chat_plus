@@ -96,12 +96,7 @@ class HomePage extends StatelessWidget {
           );
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromRGBO(
-            (color.value >> 16) & 0xFF, // Extracts red
-            (color.value >> 8) & 0xFF, // Extracts green
-            color.value & 0xFF, // Extracts blue
-            0.1,
-          ),
+          backgroundColor: color.withAlpha(26), // 0.1 * 255 ≈ 26
           foregroundColor: color,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
           shape: RoundedRectangleBorder(
