@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:ai_chat_plus/ai_chat_plus.dart';
 import 'package:ai_chat_plus/src/customizechat/widgets.dart';
@@ -12,6 +14,81 @@ class LightChatPage extends StatefulWidget {
 class _LightChatPageState extends State<LightChatPage> {
   AIProvider _currentProvider = AIProvider.gemini;
   String? _modelId = GeminiModel.geminiFlash.modelId;
+  late AIService _aiService;
+  final List<ChatMessage> _messages = [];
+  bool _isTyping = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeService();
+  }
+
+  Future<void> _initializeService() async {
+    _aiService = AIServiceFactory.createService(_currentProvider);
+    await _aiService.initialize(
+      AIModelConfig(
+        provider: _currentProvider,
+        apiKey: _getApiKey(),
+        modelId: _modelId,
+      ),
+    );
+  }
+
+  String _getApiKey() {
+    switch (_currentProvider) {
+      case AIProvider.openAI:
+        return 'your-openai-api-key';
+      case AIProvider.gemini:
+        return 'your-gemini-api-key';
+      case AIProvider.claude:
+        return 'your-claude-api-key';
+    }
+  }
+
+  Future<void> _handleSendMessage(String message) async {
+    setState(() {
+      _messages.add(ChatMessage(
+        message: message,
+        isUser: true,
+        timestamp: DateTime.now(),
+      ));
+      _isTyping = true;
+    });
+
+    try {
+      final response = await _aiService.generateResponse(message);
+      setState(() {
+        _messages.add(ChatMessage(
+          message: response,
+          isUser: false,
+          timestamp: DateTime.now(),
+        ));
+        _isTyping = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isTyping = false;
+        _messages.add(ChatMessage(
+          message: "Error: Unable to generate response. Please try again.",
+          isUser: false,
+          timestamp: DateTime.now(),
+        ));
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _aiService.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +116,9 @@ class _LightChatPageState extends State<LightChatPage> {
         ],
       ),
       body: CustomChatUI(
-        messages: const [],
-        onSendMessage: (message) {
-          // Handle message sending
-          print('Sending message: $message');
-        },
+        messages: _messages,
+        onSendMessage: _handleSendMessage,
+        isTyping: _isTyping,
         theme: ChatTheme.light(),
         userAvatarUrl: 'https://example.com/user-avatar.png',
         aiAvatarUrl: 'https://example.com/ai-avatar.png',
@@ -51,7 +126,7 @@ class _LightChatPageState extends State<LightChatPage> {
     );
   }
 
-  void _updateProvider(AIProvider provider) {
+  Future<void> _updateProvider(AIProvider provider) async {
     setState(() {
       _currentProvider = provider;
       switch (provider) {
@@ -66,5 +141,6 @@ class _LightChatPageState extends State<LightChatPage> {
           break;
       }
     });
+    await _initializeService();
   }
 } 
