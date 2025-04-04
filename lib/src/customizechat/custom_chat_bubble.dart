@@ -144,9 +144,9 @@ class _CustomChatBubbleState extends State<CustomChatBubble>
         backgroundColor: widget.isUser
             ? Color.fromARGB(
                 (0.3 * 255).round(),
-                widget.theme.userBubbleColor.value >> 16 & 0xFF,
-                widget.theme.userBubbleColor.value >> 8 & 0xFF,
-                widget.theme.userBubbleColor.value & 0xFF,
+                widget.theme.userBubbleColor.red,
+                widget.theme.userBubbleColor.green,
+                widget.theme.userBubbleColor.blue,
               )
             : widget.theme.aiBubbleColor,
         backgroundImage:
