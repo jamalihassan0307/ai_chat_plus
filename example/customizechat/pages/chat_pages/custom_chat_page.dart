@@ -16,10 +16,18 @@ class _CustomChatPageState extends State<CustomChatPage> {
   AIProvider _currentProvider = AIProvider.gemini;
   String? _modelId = GeminiModel.geminiFlash.modelId;
   late ChatTheme _customTheme;
+  late AIService _aiService;
+  final List<ChatMessage> _messages = [];
+  bool _isTyping = false;
 
   @override
   void initState() {
     super.initState();
+    _initializeTheme();
+    _initializeService();
+  }
+
+  void _initializeTheme() {
     _customTheme = ChatTheme(
       primaryColor: Colors.purple,
       backgroundColor: const Color(0xFFF0F0F0),
@@ -72,6 +80,28 @@ class _CustomChatPageState extends State<CustomChatPage> {
     );
   }
 
+  Future<void> _initializeService() async {
+    _aiService = AIServiceFactory.createService(_currentProvider);
+    await _aiService.initialize(
+      AIModelConfig(
+        provider: _currentProvider,
+        apiKey: _getApiKey(),
+        modelId: _modelId,
+      ),
+    );
+  }
+
+  String _getApiKey() {
+    switch (_currentProvider) {
+      case AIProvider.openAI:
+        return 'your-openai-api-key';
+      case AIProvider.gemini:
+        return 'your-gemini-api-key';
+      case AIProvider.claude:
+        return 'your-claude-api-key';
+    }
+  }
+
   void _openSettings() {
     Navigator.push(
       context,
@@ -86,6 +116,50 @@ class _CustomChatPageState extends State<CustomChatPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _handleSendMessage(String message) async {
+    setState(() {
+      _messages.add(ChatMessage(
+        message: message,
+        isUser: true,
+        timestamp: DateTime.now(),
+      ));
+      _isTyping = true;
+    });
+
+    try {
+      final response = await _aiService.generateResponse(message);
+      setState(() {
+        _messages.add(ChatMessage(
+          message: response,
+          isUser: false,
+          timestamp: DateTime.now(),
+        ));
+        _isTyping = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isTyping = false;
+        _messages.add(ChatMessage(
+          message: "Error: Unable to generate response. Please try again.",
+          isUser: false,
+          timestamp: DateTime.now(),
+        ));
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _aiService.dispose();
+    super.dispose();
   }
 
   @override
@@ -118,11 +192,9 @@ class _CustomChatPageState extends State<CustomChatPage> {
         ],
       ),
       body: CustomChatUI(
-        messages: const [],
-        onSendMessage: (message) {
-          // Handle message sending
-          print('Sending message: $message');
-        },
+        messages: _messages,
+        onSendMessage: _handleSendMessage,
+        isTyping: _isTyping,
         theme: _customTheme,
         userAvatarUrl: 'https://example.com/user-avatar.png',
         aiAvatarUrl: 'https://example.com/ai-avatar.png',
@@ -135,7 +207,7 @@ class _CustomChatPageState extends State<CustomChatPage> {
     );
   }
 
-  void _updateProvider(AIProvider provider) {
+  Future<void> _updateProvider(AIProvider provider) async {
     setState(() {
       _currentProvider = provider;
       switch (provider) {
@@ -150,5 +222,6 @@ class _CustomChatPageState extends State<CustomChatPage> {
           break;
       }
     });
+    await _initializeService();
   }
 } 
