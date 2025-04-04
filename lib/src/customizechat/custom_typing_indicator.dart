@@ -109,7 +109,8 @@ class _CustomTypingIndicatorState extends State<CustomTypingIndicator>
                             width: widget.dotSize,
                             height: widget.dotSize,
                             decoration: BoxDecoration(
-                              color: widget.theme.aiTextColor.withAlpha(179), // 0.7 * 255 ≈ 179
+                              color: widget.theme.aiTextColor
+                                  .withAlpha(179), // 0.7 * 255 ≈ 179
                               shape: BoxShape.circle,
                             ),
                           ),

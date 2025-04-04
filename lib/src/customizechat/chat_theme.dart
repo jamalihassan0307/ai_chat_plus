@@ -53,7 +53,7 @@ class ChatTheme {
 
   // Dark theme factory
   factory ChatTheme.dark() {
-    return  ChatTheme(
+    return ChatTheme(
       primaryColor: Colors.blue,
       backgroundColor: const Color(0xFF1A1A1A),
       userBubbleGradient: const LinearGradient(
@@ -105,12 +105,12 @@ class ChatTheme {
         height: 1.4,
         fontWeight: FontWeight.w400,
       ),
-      bubbleShadow:  BoxShadow(
+      bubbleShadow: BoxShadow(
         color: Colors.black.withAlpha(51), // 0.05 * 255 ≈ 13
         blurRadius: 8,
         offset: const Offset(0, 2),
       ),
-      inputDecoration:  BoxDecoration(
+      inputDecoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(

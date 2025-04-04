@@ -129,7 +129,7 @@ class _CustomChatBubbleState extends State<CustomChatBubble>
 
   Widget _buildAvatar() {
     return Container(
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
