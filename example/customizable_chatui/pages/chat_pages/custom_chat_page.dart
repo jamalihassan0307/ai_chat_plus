@@ -55,7 +55,7 @@ class _CustomChatPageState extends State<CustomChatPage> {
         vertical: 12,
       ),
       avatarRadius: 24,
-      inputDecoration:  BoxDecoration(
+      inputDecoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(30)),
         boxShadow: [
@@ -72,7 +72,7 @@ class _CustomChatPageState extends State<CustomChatPage> {
         color: Colors.purple,
         size: 28,
       ),
-      bubbleShadow:  BoxShadow(
+      bubbleShadow: BoxShadow(
         color: Colors.purple.withAlpha(26),
         blurRadius: 8,
         offset: const Offset(0, 2),

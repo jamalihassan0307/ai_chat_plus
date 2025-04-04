@@ -114,7 +114,7 @@ class _ClaudeChatPageState extends State<ClaudeChatPage> {
                       decoration: BoxDecoration(
                         color: isUser ? Colors.teal.shade100 : Colors.white,
                         borderRadius: BorderRadius.circular(12),
-                        boxShadow:  [
+                        boxShadow: [
                           BoxShadow(
                             color: Colors.black.withAlpha(26),
                             blurRadius: 4,
@@ -137,7 +137,7 @@ class _ClaudeChatPageState extends State<ClaudeChatPage> {
               ),
             Container(
               padding: const EdgeInsets.all(8.0),
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
