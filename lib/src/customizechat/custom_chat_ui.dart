@@ -160,7 +160,11 @@ class _CustomChatUIState extends State<CustomChatUI>
                 decoration: InputDecoration(
                   hintText: widget.hintText,
                   hintStyle: TextStyle(
-                    color: widget.theme.inputTextColor.withOpacity(0.6),
+                    color:
+                    Color.fromRGBO(
+                 widget.theme.inputTextColor.red,
+                 widget.theme.inputTextColor.green,
+                 widget.theme.inputTextColor.blue,0.6),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(24),
@@ -184,7 +188,10 @@ class _CustomChatUIState extends State<CustomChatUI>
                   shape: BoxShape.circle,
                   color: _canSendMessage
                       ? widget.theme.primaryColor
-                      : widget.theme.primaryColor.withOpacity(0.5),
+                      : Color.fromRGBO(
+                widget.theme.primaryColor.red,
+                widget.theme.primaryColor.green,
+                widget.theme.primaryColor.blue,0.5),
                 ),
                 child: IconButton(
                   icon: const Icon(Icons.send),
