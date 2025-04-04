@@ -1,20 +1,29 @@
+## 1.1.5
+
+### Improvements
+* Enhanced error handling for API responses
+* Optimized message processing performance
+* Improved type safety in service implementations
+* Updated API documentation
+* Refined code organization
+
 ## 1.1.4
 
 ### Bug Fixes
-* Fixed formatting issues in chat bubble shadow
-* Improved color handling in custom chat bubble
+* Improved error handling in message processing
 * Enhanced code formatting and style consistency
-* Fixed spacing in BoxShadow declarations
-* Optimized shadow rendering performance
+* Optimized message handling performance
+* Fixed provider switching issues
+* Updated documentation accuracy
 
 ## 1.1.3
 
 ### Bug Fixes
-* Fixed remaining deprecated color opacity usage
-* Updated color handling in chat themes
-* Improved color picker dialog implementation
-* Enhanced theme customization in example app
-* Fixed layout issues in chat UI components
+* Fixed remaining deprecated color usage
+* Updated error handling implementation
+* Improved code organization
+* Enhanced documentation clarity
+* Fixed performance issues
 
 ## 1.1.2
 
