@@ -1,3 +1,12 @@
+## 1.1.4
+
+### Bug Fixes
+* Fixed formatting issues in chat bubble shadow
+* Improved color handling in custom chat bubble
+* Enhanced code formatting and style consistency
+* Fixed spacing in BoxShadow declarations
+* Optimized shadow rendering performance
+
 ## 1.1.3
 
 ### Bug Fixes
