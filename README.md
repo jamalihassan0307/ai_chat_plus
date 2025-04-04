@@ -67,6 +67,69 @@ and the Flutter guide for
 
 A Flutter package that provides AI chat functionality with enhanced features including OpenAI, Google Gemini, and Claude AI integrations, voice recognition, and multimodal support.
 
+## Key Features
+
+### 1. AI Integration – Supports OpenAI, Gemini, and Claude
+
+```dart
+// Initialize OpenAI
+final openAIConfig = AIModelConfig(
+  provider: AIProvider.openAI,
+  apiKey: 'YOUR_OPENAI_API_KEY',
+  modelId: OpenAIModel.gpt35Turbo.modelId,
+);
+
+// Initialize Gemini
+final geminiConfig = AIModelConfig(
+  provider: AIProvider.gemini,
+  apiKey: 'YOUR_GEMINI_API_KEY',
+  modelId: GeminiModel.geminiFlash.modelId,
+);
+
+// Initialize Claude
+final claudeConfig = AIModelConfig(
+  provider: AIProvider.claude,
+  apiKey: 'YOUR_CLAUDE_API_KEY',
+  modelId: ClaudeModel.claude3Sonnet.modelId,
+);
+```
+
+### 2. Prebuilt Chat UI – Ready-to-Use Chatbot Design
+
+```dart
+AIChat(
+  apiKey: 'YOUR_API_KEY',
+  provider: AIProvider.gemini,
+  modelId: GeminiModel.geminiFlash.modelId,
+  primaryColor: Colors.blue,
+  backgroundColor: Colors.grey[100],
+)
+```
+
+### 3. Customizable Themes – Dark Mode, Custom Avatars, Fonts
+
+```dart
+CustomChatUI(
+  theme: ChatTheme(
+    primaryColor: Colors.purple,
+    backgroundColor: Colors.grey[900],
+    userBubbleColor: Colors.purpleAccent,
+    aiBubbleColor: Colors.grey[800],
+    messageTextStyle: TextStyle(fontSize: 16),
+    bubbleRadius: 20,
+    avatarRadius: 24,
+  ),
+  messages: messages,
+  onSendMessage: handleMessage,
+  isTyping: isTyping,
+)
+```
+
+For detailed examples and customization options, check:
+- Basic Chat: `example/lib/main.dart`
+- Theme Customization: `example/customizechat/pages/chat_pages/`
+- Settings UI: `example/customizechat/pages/chat_settings_page.dart`
+
 ## Features
 
 Currently Implemented:
