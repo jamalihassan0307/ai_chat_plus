@@ -190,6 +190,7 @@ class _CustomChatUIState extends State<CustomChatUI>
                   icon: const Icon(Icons.send),
                   color: Colors.white,
                   iconSize: widget.theme.sendButtonTheme.size ?? 24,
+
                   onPressed: _canSendMessage
                       ? () => _handleSubmitted(_textController.text)
                       : null,
@@ -204,6 +205,7 @@ class _CustomChatUIState extends State<CustomChatUI>
 
   void _handleSubmitted(String text) {
     final trimmedText = text.trim();
+    print('Sending message: $trimmedText');
     if (trimmedText.isEmpty) return;
     widget.onSendMessage(trimmedText);
     _textController.clear();
