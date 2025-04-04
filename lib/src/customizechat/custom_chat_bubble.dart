@@ -142,11 +142,11 @@ class _CustomChatBubbleState extends State<CustomChatBubble>
       child: CircleAvatar(
         radius: widget.theme.avatarRadius,
         backgroundColor: widget.isUser
-            ? Color.fromRGBO(
-                widget.theme.userBubbleColor.red,
-                widget.theme.userBubbleColor.green,
-                widget.theme.userBubbleColor.blue,
-                0.3,
+            ? Color.fromARGB(
+                (0.3 * 255).round(),
+                widget.theme.userBubbleColor.value >> 16 & 0xFF,
+                widget.theme.userBubbleColor.value >> 8 & 0xFF,
+                widget.theme.userBubbleColor.value & 0xFF,
               )
             : widget.theme.aiBubbleColor,
         backgroundImage:

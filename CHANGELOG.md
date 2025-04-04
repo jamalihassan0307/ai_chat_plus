@@ -7,6 +7,11 @@
 * Updated API documentation
 * Refined code organization
 
+### Bug Fixes
+* Fixed deprecated color property usage in chat bubble
+* Updated color value handling for better compatibility
+* Improved color opacity calculations
+
 ## 1.1.4
 
 ### Bug Fixes

@@ -97,9 +97,9 @@ class HomePage extends StatelessWidget {
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color.fromRGBO(
-            color.red,
-            color.green,
-            color.blue,
+            (color.value >> 16) & 0xFF, // Extracts red
+            (color.value >> 8) & 0xFF, // Extracts green
+            color.value & 0xFF, // Extracts blue
             0.1,
           ),
           foregroundColor: color,
