@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:ai_chat_plus/src/customizechat/widgets.dart';
 
@@ -259,20 +261,37 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
         onTap: () {
           showDialog(
             context: context,
-            builder: (context) => AlertDialog(
-              title: Text('Select $title'),
-              content: SingleChildScrollView(
-                child: ColorPicker(
-                  pickerColor: color,
-                  onColorChanged: onColorChanged,
+            builder: (context) => Dialog(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Select $title',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    SizedBox(
+                      width: 300,
+                      height: 300,
+                      child: ColorPicker(
+                        pickerColor: color,
+
+                        onColorChanged: onColorChanged,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Done'),
+                    ),
+                  ],
                 ),
               ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Done'),
-                ),
-              ],
             ),
           );
         },
@@ -346,30 +365,46 @@ class ColorPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
-      ),
-      itemCount: Colors.primaries.length,
-      itemBuilder: (context, index) {
-        final color = Colors.primaries[index];
-        return GestureDetector(
-          onTap: () => onColorChanged(color),
-          child: Container(
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: pickerColor == color ? Colors.white : Colors.transparent,
-                width: 2,
+    List<Color> colors = [...Colors.primaries];
+    colors.addAll([
+      Colors.white,
+      const Color(0xFFECEFF1),
+      const Color(0xFFCFD8DC),
+      const Color(0xFFB0BEC5),
+      const Color(0xFF90A4AE),
+      const Color(0xFF78909C),
+      const Color(0xFF546E7A),
+      const Color(0xFF455A64),
+      const Color(0xFF37474F),
+      const Color(0xFF263238),
+    ]);
+    return Material(
+      child: GridView.builder(
+        shrinkWrap: true,
+        // physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          mainAxisSpacing: 8,
+          crossAxisSpacing: 8,
+          childAspectRatio: 1,
+        ),
+        itemCount: colors.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () => onColorChanged(colors[index]),
+            child: Container(
+              decoration: BoxDecoration(
+                color: colors[index],
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: pickerColor == colors[index] ? Colors.white : Colors.transparent,
+                  width: 2,
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
