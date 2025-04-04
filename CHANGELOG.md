@@ -1,3 +1,12 @@
+## 1.1.6
+
+### Improvements
+* Enhanced API response handling
+* Optimized provider switching logic
+* Improved error recovery mechanisms
+* Updated documentation and examples
+* Refined code structure and organization
+
 ## 1.1.5
 
 ### Improvements
