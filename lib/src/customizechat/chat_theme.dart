@@ -110,13 +110,13 @@ class ChatTheme {
         blurRadius: 8,
         offset: Offset(0, 2),
       ),
-      inputDecoration: BoxDecoration(
+      inputDecoration: const BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Color.fromRGBO(0, 0, 0, 0.05),
             blurRadius: 8,
-            offset: const Offset(0, -2),
+            offset: Offset(0, -2),
           ),
         ],
       ),
