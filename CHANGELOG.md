@@ -1,3 +1,12 @@
+## 1.1.3
+
+### Bug Fixes
+* Fixed remaining deprecated color opacity usage
+* Updated color handling in chat themes
+* Improved color picker dialog implementation
+* Enhanced theme customization in example app
+* Fixed layout issues in chat UI components
+
 ## 1.1.2
 
 ### Bug Fixes
