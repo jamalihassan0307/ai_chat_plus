@@ -65,11 +65,27 @@ and the Flutter guide for
 
 # AI Chat Plus
 
-A Flutter package that provides AI chat functionality with enhanced features including OpenAI, Google Gemini, and Claude AI integrations, voice recognition, and multimodal support.
+> 🌟 Experience the future of chat interfaces with AI Chat Plus - where intelligent chat meets modern design. Featuring seamless AI integration, real-time interactions, and multiple provider support. Built with Flutter, powered by cutting-edge AI.
+
+## ✨ Crafted by Jamalihassan0307
+
+Transform your chat experience with:
+- ⚡ Real-time AI interactions with typing indicators
+- 🤖 Multiple AI providers (OpenAI, Gemini, Claude)
+- 🔄 Seamless provider switching
+- 📱 Clean and efficient message handling
+- ✨ Type-safe API implementation
+- 🛡️ Robust error handling
+
+### 👨‍💻 Developer Contact
+- **Creator**: [Jam Ali Hassan](https://github.com/jamalihassan0307)
+- **Portfolio**: [View Portfolio](https://jamalihassan0307.github.io/portfolio.github.io)
+- **Email**: jamalihassan0307@gmail.com
+- **LinkedIn**: [Connect on LinkedIn](https://www.linkedin.com/in/jamalihassan0307)
 
 ## Key Features
 
-### 1. AI Integration – Supports OpenAI, Gemini, and Claude
+### 1. AI Integration – Multiple Provider Support
 
 ```dart
 // Initialize OpenAI
@@ -94,41 +110,34 @@ final claudeConfig = AIModelConfig(
 );
 ```
 
-### 2. Prebuilt Chat UI – Ready-to-Use Chatbot Design
+### 2. Efficient Message Handling
 
 ```dart
 AIChat(
   apiKey: 'YOUR_API_KEY',
   provider: AIProvider.gemini,
   modelId: GeminiModel.geminiFlash.modelId,
-  primaryColor: Colors.blue,
-  backgroundColor: Colors.grey[100],
+  onError: (error) {
+    print('Error: $error');
+  },
 )
 ```
 
-### 3. Customizable Themes – Dark Mode, Custom Avatars, Fonts
+### 3. Type-Safe Implementation
 
 ```dart
 CustomChatUI(
-  theme: ChatTheme(
-    primaryColor: Colors.purple,
-    backgroundColor: Colors.grey[900],
-    userBubbleColor: Colors.purpleAccent,
-    aiBubbleColor: Colors.grey[800],
-    messageTextStyle: TextStyle(fontSize: 16),
-    bubbleRadius: 20,
-    avatarRadius: 24,
-  ),
   messages: messages,
   onSendMessage: handleMessage,
   isTyping: isTyping,
+  onError: handleError,
 )
 ```
 
-For detailed examples and customization options, check:
-- Basic Chat: `example/lib/main.dart`
-- Theme Customization: `example/customizechat/pages/chat_pages/`
-- Settings UI: `example/customizechat/pages/chat_settings_page.dart`
+For detailed examples and implementation, check:
+- Basic Usage: `example/lib/main.dart`
+- AI Integration: `example/ai_integration/`
+- Error Handling: `example/error_handling/`
 
 ## Features
 
@@ -137,11 +146,8 @@ Currently Implemented:
 - 🧠 Google Gemini Integration
 - 🔄 Streaming responses support
 - 🎯 Type-safe API
-- 📱 Easy integration with beautiful UI components
 - ⚡ Fast and efficient message handling
-- 🎨 Customizable chat UI themes (Light/Dark/Custom)
 - 🔄 Real-time provider switching
-- 📎 Attachment support in custom chat
 - ⌨️ Typing indicators
 - 🚨 Enhanced error handling
 
@@ -160,7 +166,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  ai_chat_plus: ^1.1.4
+  ai_chat_plus: ^1.1.5
 ```
 
 Then run:
